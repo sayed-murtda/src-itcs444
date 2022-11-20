@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { EditPageRoutingModule } from './edit-routing.module';
 
 import { EditPage } from './edit.page';
-import { ComponentsModule } from 'src/app/Component/Components.module';
+import { ComponentsModule } from '../../../../app/Component/Components.module';
 
 @NgModule({
   imports: [
