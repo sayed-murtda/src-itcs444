@@ -1,0 +1,49 @@
+<ion-app>
+
+
+  <ion-split-pane contentId="main-content">
+
+    
+   
+
+    <ion-menu contentId="main-content" type="overlay" >
+
+
+      <ion-content>
+        <ion-list id="inbox-list">
+          <ion-item routerLink="/">Sidebar 
+          <ion-button (click)="dark()"  slot="end" fill="clear" >
+            <ion-icon slot="end" name="{{moon}}"></ion-icon>
+          </ion-button>
+        </ion-item>
+        
+
+        
+         
+          <ion-accordion-group>
+            <ion-accordion  *ngFor="let item of appPages">
+              <ion-item slot="header" >
+                <ion-label>{{item.title}}</ion-label>
+              </ion-item>
+              <div class="ion-padding" slot="content">
+                <ion-menu-toggle autoHide="false">
+                    <ion-button expand="block"  *ngFor="let content of item.content" fill="clear" routerLink="{{content.url}}">
+                      {{content.title}}                  
+                    </ion-button>
+                  </ion-menu-toggle>
+              </div>
+            </ion-accordion>
+            
+          </ion-accordion-group>
+        </ion-list>
+
+
+      </ion-content>
+
+
+    </ion-menu>
+    <ion-router-outlet id="main-content">
+     
+    </ion-router-outlet>
+  </ion-split-pane>
+</ion-app>
