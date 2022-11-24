@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { DataService } from 'src/app/data.service';
 @Component({
   selector: 'app-items',
   templateUrl: './items.page.html',
@@ -7,7 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ItemsPage implements OnInit {
 
-  constructor() { }
+  constructor(public data: DataService) {
+    this.data.FilteredList = this.data.ListItems;
+   }
+
+  searchItem = "";
+
+  Search(){
+    this.data.FilteredList= this.data.ListItems.filter((item)=>{
+      return (item.name.toLowerCase().indexOf(this.searchItem.toLowerCase())!=-1)
+    })
+  }
 
   ngOnInit() {
   }

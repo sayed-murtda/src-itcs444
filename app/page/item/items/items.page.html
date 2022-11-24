@@ -1,6 +1,28 @@
 <app-headerpage title="Items"></app-headerpage>
 <ion-content>
     <ion-item>
-        <ion-label>All Items hasan</ion-label>
+        <h1>Our Items:</h1>
     </ion-item>
+
+    <ion-searchbar [(ngModel)]="searchItem" (ionChange)="Search()"></ion-searchbar>
+
+    <ion-card *ngFor="let item of data.FilteredList">
+
+    <ion-item lines="none">
+        <ion-avatar size="large" slot="start">
+            <img  src="..\assets\img\{{item.image}}">
+          </ion-avatar> 
+        <ion-card-header>
+            <ion-card-title>
+                {{item.name}}
+            </ion-card-title>
+        </ion-card-header>
+    </ion-item>
+    <ion-card-content>
+        <ion-label>{{item.price}} fils</ion-label>
+    </ion-card-content>
+
+    </ion-card>
+
+
 </ion-content>
