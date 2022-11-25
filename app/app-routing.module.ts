@@ -22,6 +22,10 @@ const routes: Routes = [
     path: 'edit-employee',
     loadChildren: () => import('./page/Employee/edit/edit-employee/edit-employee.module').then( m => m.EditEmployeePageModule)
   },
+  {
+    path: 'signin',
+    loadChildren: () => import('./page/user/signin/signin.module').then( m => m.SigninPageModule)
+  },
 
 
 

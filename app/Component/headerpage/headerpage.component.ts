@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-headerpage',
@@ -7,8 +9,21 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class HeaderpageComponent implements OnInit {
   @Input() title:string='';
-  constructor() { }
+  @Input() logout:boolean=false;
+  testlogout=true;
+  constructor(public route: Router,public menuCtrl: MenuController) { 
+   
+  }
 
-  ngOnInit() {}
+  ngOnInit(): void {
+       
+    
+  }
+
+  LOGOUT(){
+    this.menuCtrl.enable(false);
+    this.route.navigateByUrl('/signin');
+
+  }
 
 }

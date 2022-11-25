@@ -14,7 +14,9 @@ export class AppComponent {
   ];
   darkMode=false;
   moon='moon-outline';
-  constructor() {}
+  constructor() {
+    document.body.setAttribute('color-theme','light');
+  }
 
   dark(){
     this.darkMode=!this.darkMode;
@@ -23,7 +25,7 @@ export class AppComponent {
       this.moon='moon';
 
     }else{
-      document.body.setAttribute('color-theme','ligth');
+      document.body.setAttribute('color-theme','light');
       this.moon='moon-outline';
 
     }

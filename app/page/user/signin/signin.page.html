@@ -1,0 +1,28 @@
+<app-headerpage title="LOGIN Page" [logout]=true ></app-headerpage>
+
+<ion-content>
+  <div  style="display:flex; justify-content: center;
+  ">
+    <ion-icon slot="end" class="login-icon" name="person-circle-outline"></ion-icon>
+  </div>
+
+  <form >
+    <ion-item>
+      <ion-input position="floating"  placeholder="Username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input position="password" type="password"   placeholder="Password"></ion-input>
+    </ion-item>
+   
+    <ion-item lines="none">
+      <ion-label>Remember me</ion-label>
+      <ion-checkbox defaultChecked={true} slot="start" ></ion-checkbox>
+    </ion-item>
+    <ion-button (click)="Login()" expand="block">
+      Login
+    </ion-button>
+
+   
+  </form>
+</ion-content>
+

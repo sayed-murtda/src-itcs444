@@ -29,6 +29,13 @@ export class DataService {
                         {id:4, name: 'Water', description: 'water is good'
                         , qty:50, price: 100, supplyPrice: 60, image: 'water.jpg'} 
                       ];
-
+users=[
+  {id:1,username:'admin',password:'admin',type:'admin'},
+]
   FilteredList: item[]= [];
+
+  cheackuser (username:string,password:string){
+
+   return this.users.findIndex( a => a.username==username && a.password==password  );
+  }
 }
