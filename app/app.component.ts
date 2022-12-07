@@ -8,7 +8,7 @@ export class AppComponent {
   disaply=false;
   public appPages = [
     { title: 'Items', content: [{ title: 'Show', url: '/' },{ title: 'edit', url: '/item/edit' },{ title: 'Remove', url: '' } ]},
-    { title: 'Employees', content: [{ title: 'Show', url: '/employees' },{ title: 'edit', url: '/edit-employee' },{ title: 'Add', url: '' },{ title: 'Remove', url: '' } ]},
+    { title: 'Employees', content: [{ title: 'Show', url: '/employees' },{ title: 'edit', url: '/edit-employee' },{ title: 'add', url: '/add' },{ title: 'delete', url: '/delete' } ]},
     { title: 'Suppliers', content: [{ title: 'Show', url: '' },{ title: 'Add', url: '' }]},
     { title: 'Reports', content: [{ title: 'Show', url: '' }]},
   ];

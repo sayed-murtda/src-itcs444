@@ -26,6 +26,14 @@ const routes: Routes = [
     path: 'signin',
     loadChildren: () => import('./page/user/signin/signin.module').then( m => m.SigninPageModule)
   },
+  {
+    path: 'delete',
+    loadChildren: () => import('./page/Employee/delete/delete.module').then( m => m.DeletePageModule)
+  },
+  {
+    path: 'add',
+    loadChildren: () => import('./page/Employee/add/add.module').then( m => m.AddPageModule)
+  },
 
 
 
