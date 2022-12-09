@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EmployeeService } from '../../employee.service';
 
 @Component({
   selector: 'app-edit-employee',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditEmployeePage implements OnInit {
 
-  constructor() { }
+  constructor(empServ:EmployeeService) { }
 
   ngOnInit() {
   }
