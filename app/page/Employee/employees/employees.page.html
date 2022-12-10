@@ -2,13 +2,25 @@
 
 <ion-content>
     <h1 class="ion-padding">Employees</h1>
-    <ion-card *ngFor="let employee of empServ.Employee">
+    <ion-card *ngFor="let employee of empServ.Employee, let i = index">
         <ion-card-header>
             <ion-card-subtitle>{{employee.job}}</ion-card-subtitle>
-            <ion-card-title>{{employee.name}}</ion-card-title>
+            <ion-row>
+                <ion-col size="8">
+                    <ion-card-title>{{employee.name}}</ion-card-title>
+                </ion-col>
+
+            </ion-row>
         </ion-card-header>
-        <ion-card-content>
-            Shift: {{employee.shift}}<br> Certificate: {{employee.certificate}}<br> CPR: {{employee.cpr}}
-        </ion-card-content>
+        <ion-row>
+            <ion-col size="8">
+                <ion-card-content>
+                    Shift: {{employee.shift}}<br> Certificate: {{employee.certificate}}<br> CPR: {{employee.cpr}}
+                </ion-card-content>
+            </ion-col>
+            <ion-col>
+                <ion-button routerLink="/edit-employee" [queryParams]="{index:i}">edit</ion-button>
+            </ion-col>
+        </ion-row>
     </ion-card>
 </ion-content>
