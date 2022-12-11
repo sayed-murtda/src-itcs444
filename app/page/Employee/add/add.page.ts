@@ -7,7 +7,8 @@ import { EmployeeService } from '../employee.service';
   styleUrls: ['./add.page.scss'],
 })
 export class AddPage implements OnInit {
-  id:number=0;
+  
+  id=this.empServ.Employee.length;
   empName='';
   empCpr='';
   empJob='';
@@ -22,12 +23,12 @@ export class AddPage implements OnInit {
 
   add(){
     this.empServ.Employee.push({name:this.empName,id:this.id,cpr:this.empCpr,job:this.empJob,shift:this.empShift,certificate:this.certRadio,switchShift:[]})
+    this.id+=1;
     alert("Added Successfully");
     this.reset();
   }
 
   reset(){
-    this.id=0;
   this.empName='';
   this.empCpr='';
   this.empJob='';

@@ -1,0 +1,25 @@
+<app-headerpage title="request"></app-headerpage>
+
+<ion-content>
+    <h1 class="ion-padding">Requests</h1>
+    <div>
+        <ion-card *ngFor="let employee of empServ.Employee[1].switchShift, let i=index">
+            <ion-card-header>
+                <ion-card-subtitle>{{employee}}</ion-card-subtitle>
+                <ion-row>
+                    <ion-col>
+                        <ion-card-title></ion-card-title>
+                        <ion-card-subtitle></ion-card-subtitle>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <ion-button>
+                            Accept
+                        </ion-button>
+                    </ion-col>
+                </ion-row>
+            </ion-card-header>
+        </ion-card>
+    </div>
+</ion-content>

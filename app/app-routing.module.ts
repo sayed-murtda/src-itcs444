@@ -34,6 +34,14 @@ const routes: Routes = [
     path: 'add',
     loadChildren: () => import('./page/Employee/add/add.module').then( m => m.AddPageModule)
   },
+  {
+    path: 'switch-shift',
+    loadChildren: () => import('./page/Employee/switch-shift/switch-shift.module').then( m => m.SwitchShiftPageModule)
+  },
+  {
+    path: 'request',
+    loadChildren: () => import('./page/Employee/request/request.module').then( m => m.RequestPageModule)
+  },
 
 
 

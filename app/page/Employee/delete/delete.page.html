@@ -1,4 +1,25 @@
 <app-headerpage title="delete"></app-headerpage>
 <ion-content>
-    <h1>Delete Employee</h1>
+    <h1 class="ion-padding">Delete Employee</h1>
+    <ion-card *ngFor="let employee of empServ.Employee, let i = index">
+        <ion-card-header>
+            <ion-card-subtitle>{{employee.id}}-{{employee.job}}</ion-card-subtitle>
+            <ion-row>
+                <ion-col size="8">
+                    <ion-card-title>{{employee.name}}</ion-card-title>
+                </ion-col>
+
+            </ion-row>
+        </ion-card-header>
+        <ion-row>
+            <ion-col size="7">
+                <ion-card-content>
+                    Shift: {{employee.shift}}<br> Certificate: {{employee.certificate}}<br> CPR: {{employee.cpr}}
+                </ion-card-content>
+            </ion-col>
+            <ion-col>
+                <ion-button color="danger" (click)="delete(i)">Delete</ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-card>
 </ion-content>

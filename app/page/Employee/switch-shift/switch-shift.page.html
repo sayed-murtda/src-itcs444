@@ -1,0 +1,23 @@
+<app-headerpage title="Switch"></app-headerpage>
+
+<ion-content>
+    <h1 class="ion-padding">Switch</h1>
+    <ion-card *ngFor="let employee of empServ.Employee, let i=index">
+        <ion-card-header>
+            <ion-card-subtitle>{{employee.job}}</ion-card-subtitle>
+            <ion-row>
+                <ion-col>
+                    <ion-card-title>{{employee.name}}</ion-card-title>
+                    <ion-card-subtitle>Shift: {{employee.shift}}</ion-card-subtitle>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-button (click)="switchShift(i)">
+                        request Switch
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-card-header>
+    </ion-card>
+</ion-content>
