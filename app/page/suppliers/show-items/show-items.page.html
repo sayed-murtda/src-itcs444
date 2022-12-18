@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Show Items</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="!data.SupplierItemsList[index].ItemsForSupplier?.length">
+    <p>Empty</p>
+</div>
+  <ion-card *ngFor="let item of data.SupplierItemsList[index].ItemsForSupplier">
+   
+        <ion-card-header>
+            <ion-card-title>
+              {{item.Name}}
+            </ion-card-title>
+        </ion-card-header>
+   
+    <ion-card-content>
+        {{item.Price}} BD
+    </ion-card-content>
+  
+    <ion-card-content>
+     {{item.Description}}
+  </ion-card-content>
+
+  <ion-card-content>
+    {{item.itemsPerCartoon}} items per carton
+</ion-card-content>
+
+
+
+    </ion-card>
+</ion-content>

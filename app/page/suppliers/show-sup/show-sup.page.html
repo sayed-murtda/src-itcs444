@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>ShowSup</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let sup of data.SupplierItemsList ; let i=index">
+
+    <ion-item lines="none">
+        <ion-card-header>
+            <ion-card-title>
+                {{sup.name}}
+            </ion-card-title>
+        </ion-card-header>
+    </ion-item>
+    <ion-card-content>
+        <ion-button routerLink="/suppliers/add/{{i}}" size="small" slot="end">Add Items</ion-button>
+        <ion-button routerLink="/suppliers/show-items/{{i}}" size="small" slot="end">Show Items</ion-button>
+    </ion-card-content>
+
+    </ion-card>
+</ion-content>

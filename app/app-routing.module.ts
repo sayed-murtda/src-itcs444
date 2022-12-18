@@ -18,7 +18,8 @@ const routes: Routes = [
   {
     path: 'employees',
     loadChildren: () => import('./page/Employee/employees/employees.module').then( m => m.EmployeesPageModule)
-  },  {
+  },
+  {
     path: 'edit-employee',
     loadChildren: () => import('./page/Employee/edit/edit-employee/edit-employee.module').then( m => m.EditEmployeePageModule)
   },
@@ -41,6 +42,22 @@ const routes: Routes = [
   {
     path: 'request',
     loadChildren: () => import('./page/Employee/request/request.module').then( m => m.RequestPageModule)
+  },
+  {
+    path: 'suppliers/add/:index',
+    loadChildren: () => import('./page/suppliers/add/add.module').then( m => m.AddPageModule)
+  },
+  {
+    path: 'suppliers/request',
+    loadChildren: () => import('./page/suppliers/request/request.module').then( m => m.RequestPageModule)
+  },
+  {
+    path: 'suppliers/show-sup',
+    loadChildren: () => import('./page/suppliers/show-sup/show-sup.module').then( m => m.ShowSupPageModule)
+  },
+  {
+    path: 'suppliers/show-items/:index',
+    loadChildren: () => import('./page/suppliers/show-items/show-items.module').then( m => m.ShowItemsPageModule)
   },
 
 

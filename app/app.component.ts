@@ -9,7 +9,7 @@ export class AppComponent {
   public appPages = [
     { title: 'Items', content: [{ title: 'Show', url: '/' },{ title: 'edit', url: '/item/edit' },{ title: 'Remove', url: '' } ]},
     { title: 'Employees', content: [{ title: 'Show', url: '/employees' },{ title: 'edit', url: '/edit-employee' },{ title: 'add', url: '/add' },{ title: 'delete', url: '/delete' },{ title: 'switchShift', url: '/switch-shift' },{title:'request', url: '/request'} ]},
-    { title: 'Suppliers', content: [{ title: 'Show', url: '' },{ title: 'Add', url: '' }]},
+    { title: 'suppliers', content: [{ title: 'Add', url: 'suppliers/add' },{ title: 'Request', url: 'suppliers/request' },{ title: 'Show Suppliers', url: 'suppliers/show-sup' }]},
     { title: 'Reports', content: [{ title: 'Show', url: '' }]},
   ];
   darkMode=false;
@@ -30,7 +30,6 @@ export class AppComponent {
 
     }
   }
-
   onClick(){
     this.disaply=!this.disaply;
   }

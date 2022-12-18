@@ -9,12 +9,30 @@ interface item{
   supplyPrice: number;
   image: string;
 }
+export interface SupplierItems{
+  ID:any,
+  Name:String,
+  // Img:String,
+  Price: number,
+  Description:String,
+  itemsPerCartoon:number,
+}
+export interface SupItem{
+  id: any;
+  name: string;
+  ItemsForSupplier:SupplierItems[]
+}
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
   constructor() { }
+  public SupplierItemsList: SupItem[] =[
+    {id:1 , name:'nada',ItemsForSupplier:[]},
+    {id:2 , name:'Al-marai',ItemsForSupplier:[]}
+
+  ];
 
   ListItems: item[] = [
                         {id:1, name: 'Ice cream', description: 'so good'
@@ -37,5 +55,9 @@ users=[
   cheackuser (username:string,password:string){
 
    return this.users.findIndex( a => a.username==username && a.password==password  );
+  }
+
+  AddSupItem(index:number,item_id:number , item_name:String , item_price:number , item_desc:String , ite_per_carton:number){
+    this.SupplierItemsList[index].ItemsForSupplier.push({ID:item_id , Name:item_name, Price:item_price,Description:item_desc,itemsPerCartoon:ite_per_carton})
   }
 }
