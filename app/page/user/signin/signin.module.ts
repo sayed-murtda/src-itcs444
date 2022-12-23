@@ -8,6 +8,7 @@ import { SigninPageRoutingModule } from './signin-routing.module';
 
 import { SigninPage } from './signin.page';
 import { ComponentsModule } from '../../../../app/Component/Components.module';
+import { UserService } from '../user.service';
 
 @NgModule({
   imports: [
@@ -19,4 +20,9 @@ import { ComponentsModule } from '../../../../app/Component/Components.module';
   ],
   declarations: [SigninPage]
 })
-export class SigninPageModule {}
+export class SigninPageModule {
+
+  constructor(public user:UserService) {
+   }
+
+}

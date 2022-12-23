@@ -4,17 +4,26 @@
     <ion-menu contentId="main-content">
       <ion-header>
         <ion-toolbar class="sidebarup">
-          <ion-title>Menu Content</ion-title>
+          <ion-title>Menu Content-{{dataSrv.Userstype}}-
+           </ion-title>
           <ion-button (click)="dark()"  slot="end" fill="clear" >
-            <ion-icon slot="end" name="{{moon}}"></ion-icon>
+            <ion-icon slot="end" name="{{moon}}"> </ion-icon>
           </ion-button>
         </ion-toolbar>
-        
+
       </ion-header>
       <ion-content class="ion-padding">
 
         <ion-accordion-group class="sidebarup">
-          <ion-accordion  *ngFor="let item of appPages">
+          <div *ngFor="let item of appPages">
+          <ion-accordion *ngIf="(item.title=='Items'&& (dataSrv.Userstype=='supervisors' || dataSrv.Userstype=='owner' )) || 
+                                (item.title=='Chasher'&& (dataSrv.Userstype=='supervisors' || dataSrv.Userstype=='chasher'|| dataSrv.Userstype=='owner' )) ||
+                                ( item.title=='Employees' &&  (dataSrv.Userstype=='supervisors' || dataSrv.Userstype=='chasher'|| dataSrv.Userstype=='employees' ))|| 
+                                ( item.title=='Employees-Management' &&  (dataSrv.Userstype=='owner' )) ||
+                                ( item.title=='suppliers' &&  (dataSrv.Userstype=='suppliers' )) ||
+                                ( item.title=='Reports' &&  (dataSrv.Userstype=='owner' )) 
+                                " >
+            
             <ion-item slot="header" >
               <ion-label>{{item.title}}</ion-label>
             </ion-item>
@@ -25,8 +34,10 @@
                   </ion-button>
                 </ion-menu-toggle>
             </div>
-          </ion-accordion>
+
           
+          </ion-accordion>
+        </div>
         </ion-accordion-group>
 
       </ion-content>

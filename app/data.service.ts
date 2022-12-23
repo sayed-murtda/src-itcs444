@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 
+
 interface item{
   id: any;
   name: string;
@@ -26,6 +27,7 @@ export interface SupItem{
   providedIn: 'root'
 })
 export class DataService {
+  Userstype='';
 
   constructor() { }
   public SupplierItemsList: SupItem[] =[

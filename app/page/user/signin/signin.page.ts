@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { UserService } from '../user.service';
+import { User, UserService } from '../user.service';
+import { DataService } from '../../../data.service';
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.page.html',
@@ -10,8 +11,12 @@ import { UserService } from '../user.service';
 export class SigninPage implements OnInit {
   username='';
   password='';
-  constructor(public route: Router,public menuCtrl: MenuController,public user:UserService) { 
+  name:any;
+  usertype;
+  constructor(public route: Router,public menuCtrl: MenuController,public user:UserService,public dataSrv:DataService) { 
     this.menuCtrl.enable(false);
+
+ 
 
   }
 
@@ -19,20 +24,30 @@ export class SigninPage implements OnInit {
   }
 
   Login(){
-      this.menuCtrl.enable(true);
-      this.user.SignUp(this.username, this.password).then( ()=>{
-      this.route.navigateByUrl('/items');
+      this.user.SignIn(this.username, this.password).then( ()=>{
+        this.UserType(this.username)
     })
     .catch( ()=>{
       alert("SignIn Incorrect username or password");
     });
-    // let a=this.user.cheackuser(this.username,this.password);
-    // if(a>-1){
-    // this.menuCtrl.enable(true);
-    // this.route.navigateByUrl('/items');
-    // }else
-    // alert('not')
+
   }
+
+
+  UserType(id) {
+        if (id) {
+          this.user.getuser(id).subscribe(user => {
+            console.log(user)
+            if(user?.type=="supervisors"){
+              this.route.navigateByUrl('/items');
+              this.dataSrv.Userstype=user.type;
+              this.menuCtrl.enable(true);
+            }
+          });
+        }
+      }
+    
+
 
 
 

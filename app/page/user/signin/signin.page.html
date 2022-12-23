@@ -1,4 +1,4 @@
-<app-headerpage title="LOGIN Page" [logout]=true ></app-headerpage>
+<app-headerpage title="LOGIN Page" [logout]="true" ></app-headerpage>
 
 <ion-content>
   <div  style="display:flex; justify-content: center;
@@ -6,12 +6,12 @@
     <ion-icon slot="end" class="login-icon" name="person-circle-outline"></ion-icon>
   </div>
 
-  <form >
+  
     <ion-item>
-      <ion-input position="floating"  placeholder="Username"></ion-input>
+      <ion-input position="floating"  placeholder="Username" [(ngModel)]="username"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input position="password" type="password"   placeholder="Password"></ion-input>
+      <ion-input position="password" type="password"   placeholder="Password"  [(ngModel)]="password" ></ion-input>
     </ion-item>
    
     <ion-item lines="none">
@@ -22,7 +22,9 @@
       Login
     </ion-button>
 
+
    
-  </form>
+    
+  
 </ion-content>
 
