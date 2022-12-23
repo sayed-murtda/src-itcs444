@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { Emp, EmployeeService } from './page/Employee/employee.service';
 
 
 interface item{
@@ -28,8 +30,17 @@ export interface SupItem{
 })
 export class DataService {
   Userstype='';
+  emp:Emp={
+    id: "string",
+    name: "string",
+    cpr: "string",
+    job: "string",
+    shift: "string",
+    salary: 2423423,
+    switchShift: []
+  };
 
-  constructor() { }
+  constructor(public EmpServ:EmployeeService,public route:Router) { }
   public SupplierItemsList: SupItem[] =[
     {id:1 , name:'nada',ItemsForSupplier:[]},
     {id:2 , name:'Al-marai',ItemsForSupplier:[]}
@@ -61,5 +72,15 @@ users=[
 
   AddSupItem(index:number,item_id:number , item_name:String , item_price:number , item_desc:String , ite_per_carton:number){
     this.SupplierItemsList[index].ItemsForSupplier.push({ID:item_id , Name:item_name, Price:item_price,Description:item_desc,itemsPerCartoon:ite_per_carton})
+  }
+
+  Employee(id){
+    this.EmpServ.getEmployee(id).subscribe(emp => {
+              if(emp){
+              this.emp = emp;
+              console.log(emp)
+              this.route.navigateByUrl('/Employee/welcome');
+              }
+            });
   }
 }

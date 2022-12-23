@@ -23,7 +23,6 @@ export class EditEmployeePage implements OnInit {
     this.empCpr=this.empServ.Employee[this.id].cpr;
     this.empJob=this.empServ.Employee[this.id].job;
     this.empShift=this.empServ.Employee[this.id].shift;
-    this.certRadio=this.empServ.Employee[this.id].certificate;
 
   }
 
@@ -32,7 +31,6 @@ export class EditEmployeePage implements OnInit {
     this.empServ.Employee[this.id].cpr=this.empCpr;
     this.empServ.Employee[this.id].job=this.empJob;
     this.empServ.Employee[this.id].shift=this.empShift;
-    this.empServ.Employee[this.id].certificate=this.certRadio;
     alert("Saved Successfully");
   }
 

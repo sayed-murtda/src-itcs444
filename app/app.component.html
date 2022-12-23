@@ -4,7 +4,7 @@
     <ion-menu contentId="main-content">
       <ion-header>
         <ion-toolbar class="sidebarup">
-          <ion-title>Menu Content-{{dataSrv.Userstype}}-
+          <ion-title>{{dataSrv.Userstype}}
            </ion-title>
           <ion-button (click)="dark()"  slot="end" fill="clear" >
             <ion-icon slot="end" name="{{moon}}"> </ion-icon>
@@ -17,8 +17,8 @@
         <ion-accordion-group class="sidebarup">
           <div *ngFor="let item of appPages">
           <ion-accordion *ngIf="(item.title=='Items'&& (dataSrv.Userstype=='supervisors' || dataSrv.Userstype=='owner' )) || 
-                                (item.title=='Chasher'&& (dataSrv.Userstype=='supervisors' || dataSrv.Userstype=='chasher'|| dataSrv.Userstype=='owner' )) ||
-                                ( item.title=='Employees' &&  (dataSrv.Userstype=='supervisors' || dataSrv.Userstype=='chasher'|| dataSrv.Userstype=='employees' ))|| 
+                                (item.title=='Casher'&& (dataSrv.Userstype=='supervisors' || dataSrv.Userstype=='Casher'|| dataSrv.Userstype=='owner' )) ||
+                                ( item.title=='Employees' &&  (dataSrv.Userstype=='supervisors' || dataSrv.Userstype=='Casher'|| dataSrv.Userstype=='employees' ))|| 
                                 ( item.title=='Employees-Management' &&  (dataSrv.Userstype=='owner' )) ||
                                 ( item.title=='suppliers' &&  (dataSrv.Userstype=='suppliers' )) ||
                                 ( item.title=='Reports' &&  (dataSrv.Userstype=='owner' )) 

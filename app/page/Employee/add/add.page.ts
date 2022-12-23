@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EmployeeService } from '../employee.service';
+import { Emp, EmployeeService } from '../employee.service';
 
 @Component({
   selector: 'app-add',
@@ -14,6 +14,16 @@ export class AddPage implements OnInit {
   empJob='';
   empShift='';
   certRadio='';
+  type='';
+  emp:Emp={
+    id: "",
+    name: "",
+    cpr: "",
+    job: "",
+    shift: "",
+    salary:0 ,
+    switchShift: []
+  }; 
 
   constructor(public empServ:EmployeeService) { }
 
@@ -22,10 +32,7 @@ export class AddPage implements OnInit {
   }
 
   add(){
-    this.empServ.Employee.push({name:this.empName,id:this.id,cpr:this.empCpr,job:this.empJob,shift:this.empShift,certificate:this.certRadio,switchShift:[]})
-    this.id+=1;
-    alert("Added Successfully");
-    this.reset();
+    this.empServ.addEmployee(this.emp,this.type);
   }
 
   reset(){

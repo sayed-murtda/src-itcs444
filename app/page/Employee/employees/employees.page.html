@@ -2,7 +2,7 @@
 
 <ion-content>
     <h1 class="ion-padding">Employees</h1>
-    <ion-card *ngFor="let employee of empServ.Employee, let i = index">
+    <ion-card *ngFor="let employee of employees, let i = index">
         <ion-card-header>
             <ion-card-subtitle>{{employee.id}}-{{employee.job}}</ion-card-subtitle>
             <ion-row>
@@ -15,7 +15,7 @@
         <ion-row>
             <ion-col size="8">
                 <ion-card-content>
-                    Shift: {{employee.shift}}<br> Certificate: {{employee.certificate}}<br> CPR: {{employee.cpr}}
+                    Shift: {{employee.shift}}<br>  CPR: {{employee.cpr}}
                 </ion-card-content>
             </ion-col>
             <ion-col>

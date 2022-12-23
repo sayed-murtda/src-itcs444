@@ -37,11 +37,17 @@ export class SigninPage implements OnInit {
   UserType(id) {
         if (id) {
           this.user.getuser(id).subscribe(user => {
-            console.log(user)
-            if(user?.type=="supervisors"){
-              this.route.navigateByUrl('/items');
-              this.dataSrv.Userstype=user.type;
+            if(user?.type){
               this.menuCtrl.enable(true);
+              this.dataSrv.Userstype=user.type;
+              if(user?.type=='employee' || user?.type=='Casher'  || user?.type=='supervisors'  ){
+                this.dataSrv.Employee(id);
+              }else if(user?.type=='owner'){
+                this.route.navigateByUrl('/items');
+              }
+              else{
+              this.route.navigateByUrl('/items');
+              }
             }
           });
         }

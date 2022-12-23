@@ -3,50 +3,63 @@
     <ion-list>
         <ion-item>
             <ion-label>Name: </ion-label>
-            <ion-input [(ngModel)]="empName"></ion-input>
+            <ion-input [(ngModel)]="emp.name"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label>CPR: </ion-label>
-            <ion-input [(ngModel)]="empCpr"></ion-input>
+            <ion-input [(ngModel)]="emp.cpr"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Email: </ion-label>
+            <ion-input  type="email" [(ngModel)]="emp.id"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label>Job: </ion-label>
-            <ion-input [(ngModel)]="empJob"></ion-input>
+            <ion-input [(ngModel)]="emp.job"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Salary</ion-label>
+            <ion-input type="number" [(ngModel)]="emp.salary" ></ion-input>
         </ion-item>
     </ion-list>
     <ion-list>
         <ion-item lines="none">Shift: </ion-item>
 
-        <ion-radio-group [(ngModel)]="empShift">
+        <ion-radio-group [(ngModel)]="emp.shift">
             <ion-item>
                 <ion-label>6am-2pm</ion-label>
                 <ion-radio slot="start"  value="6am-2pm"></ion-radio>
             </ion-item>
             <ion-item>
-                <ion-label>2pm-10pm</ion-label>
+                <ion-label>2am-10pm</ion-label>
                 <ion-radio slot="start"  value="2pm-10pm"></ion-radio>
             </ion-item>
+            <ion-item>
+                <ion-label>4pm-12pm</ion-label>
+                <ion-radio slot="start"  value="4pm-12pm"></ion-radio>
+            </ion-item>
         </ion-radio-group>
-        <ion-item lines="none">Certificate: </ion-item>
+        
+    </ion-list>
 
-        <ion-radio-group [(ngModel)]="certRadio">
+    <ion-list>
+        <ion-item lines="none">Type: </ion-item>
+
+        <ion-radio-group [(ngModel)]="type">
             <ion-item>
-                <ion-label>Secondary</ion-label>
-                <ion-radio slot="start"  value="Secondary"></ion-radio>
+                <ion-label>Employee-Casher</ion-label>
+                <ion-radio slot="start"  value="Casher"></ion-radio>
             </ion-item>
             <ion-item>
-                <ion-label>Diploma</ion-label>
-                <ion-radio slot="start"  value="Diploma"></ion-radio>
+                <ion-label>Employee-other</ion-label>
+                <ion-radio slot="start"  value="employee"></ion-radio>
             </ion-item>
             <ion-item>
-                <ion-label>BSc</ion-label>
-                <ion-radio slot="start"  value="BSc"></ion-radio>
-            </ion-item>
-            <ion-item>
-                <ion-label>MSc</ion-label>
-                <ion-radio slot="start"  value="MSc"></ion-radio>
+                <ion-label>Supervisors</ion-label>
+                <ion-radio slot="start"  value="supervisors"></ion-radio>
             </ion-item>
         </ion-radio-group>
+        
     </ion-list>
     <ion-button expand="full" color="secondary" (click)="add()">add</ion-button>
 

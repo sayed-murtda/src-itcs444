@@ -59,6 +59,11 @@ const routes: Routes = [
     path: 'suppliers/show-items/:index',
     loadChildren: () => import('./page/suppliers/show-items/show-items.module').then( m => m.ShowItemsPageModule)
   },
+  {
+    path: 'Employee/welcome',
+    loadChildren: () => import('./page/Employee/welcome/welcome.module').then( m => m.WelcomePageModule)
+  },
+
 
 
 
