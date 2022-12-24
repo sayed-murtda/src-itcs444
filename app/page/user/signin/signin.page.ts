@@ -24,8 +24,9 @@ export class SigninPage implements OnInit {
   }
 
   Login(){
-      this.user.SignIn(this.username, this.password).then( ()=>{
-        this.UserType(this.username)
+
+    this.user.SignIn(this.username, this.password).then( ()=>{
+      this.UserType(this.username)
     })
     .catch( ()=>{
       alert("SignIn Incorrect username or password");
@@ -35,23 +36,25 @@ export class SigninPage implements OnInit {
 
 
   UserType(id) {
-        if (id) {
-          this.user.getuser(id).subscribe(user => {
-            if(user?.type){
-              this.menuCtrl.enable(true);
-              this.dataSrv.Userstype=user.type;
-              if(user?.type=='employee' || user?.type=='Casher'  || user?.type=='supervisors'  ){
-                this.dataSrv.Employee(id);
-              }else if(user?.type=='owner'){
-                this.route.navigateByUrl('/items');
-              }
-              else{
-              this.route.navigateByUrl('/items');
-              }
-            }
-          });
-        }
+    this.user.getuser(id).subscribe((docRef) => { 
+        let type =docRef.data()?.type;
+        console.log(docRef.data())
+        if(type){
+          this.menuCtrl.enable(true);
+          this.dataSrv.Userstype=type;
+          if(type=='employee' || type=='Casher'  || type=='supervisors'  ){
+            this.dataSrv.Employee(id);
+          }else if(type=='owner'){
+            this.route.navigateByUrl('/items');
+          }
+          else{
+          this.route.navigateByUrl('/items');
+          }
+
       }
+    })
+
+  }
     
 
 

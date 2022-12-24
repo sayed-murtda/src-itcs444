@@ -7,4 +7,26 @@
     <ion-label>s</ion-label>
     <ion-label>{{dataSrv.emp |json}}</ion-label>
   </ion-item>
+
+  <div *ngFor="let item of week; let i =index">
+
+    <ion-item >{{item}} :</ion-item> <br>
+
+    <ion-segment [(ngModel)]="dataSrv.emp.shift[i]" [disabled]="true" >
+        <br>
+        <ion-segment-button value="6am-2pm">
+          <ion-label>6am-2pm</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="2pm-10pm">
+          <ion-label>2pm-1-pm</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="4pm-12pm">
+            <ion-label>4pm-12pm</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="holiday">
+            <ion-label>Ho</ion-label>
+          </ion-segment-button>
+      </ion-segment>
+   </div>
+
 </ion-content>

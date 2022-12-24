@@ -30,7 +30,7 @@ export interface SupItem{
 })
 export class DataService {
   Userstype='';
-  emp:Emp={
+  emp:any={
     id: "string",
     name: "string",
     cpr: "string",
@@ -77,7 +77,7 @@ users=[
   Employee(id){
     this.EmpServ.getEmployee(id).subscribe(emp => {
               if(emp){
-              this.emp = emp;
+              this.emp = emp.data();
               console.log(emp)
               this.route.navigateByUrl('/Employee/welcome');
               }

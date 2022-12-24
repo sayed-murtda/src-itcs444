@@ -20,6 +20,7 @@
             </ion-col>
             <ion-col>
                 <ion-button routerLink="/edit-employee" [queryParams]="{index:i}">edit</ion-button>
+                <ion-button  (click)="delete(employee.id)">Delete</ion-button>
             </ion-col>
         </ion-row>
     </ion-card>

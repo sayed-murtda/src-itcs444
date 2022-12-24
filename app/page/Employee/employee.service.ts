@@ -13,7 +13,7 @@ export interface Emp {
   name: string;
   cpr: string;
   job: string;
-  shift: string;
+  shift: string[];
   salary: number;
   switchShift: number[];
 }
@@ -45,14 +45,10 @@ export class EmployeeService {
       return  this.Employees;
   }
 
-    getEmployee(id:  string):  Observable<Emp|undefined>  {
-      return  this.EmployeeCollection.doc<Emp>(id).valueChanges().pipe(
-          map(idea  =>  {
-            if(idea)
-              idea.id  =  id;
-              return  idea
-          })
-      );
+    getEmployee(id:  string){
+      return this.EmployeeCollection
+      .doc(id)
+      .get()
     }
 
  

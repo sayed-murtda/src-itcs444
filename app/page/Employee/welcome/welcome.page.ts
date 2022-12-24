@@ -7,6 +7,7 @@ import { DataService } from '../../../data.service';
   styleUrls: ['./welcome.page.scss'],
 })
 export class WelcomePage implements OnInit {
+  week=['Sanday','Moday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 
   constructor(public dataSrv:DataService) { }
 

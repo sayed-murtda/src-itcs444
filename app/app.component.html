@@ -18,7 +18,7 @@
           <div *ngFor="let item of appPages">
           <ion-accordion *ngIf="(item.title=='Items'&& (dataSrv.Userstype=='supervisors' || dataSrv.Userstype=='owner' )) || 
                                 (item.title=='Casher'&& (dataSrv.Userstype=='supervisors' || dataSrv.Userstype=='Casher'|| dataSrv.Userstype=='owner' )) ||
-                                ( item.title=='Employees' &&  (dataSrv.Userstype=='supervisors' || dataSrv.Userstype=='Casher'|| dataSrv.Userstype=='employees' ))|| 
+                                ( item.title=='Employees' &&  (dataSrv.Userstype=='supervisors' || dataSrv.Userstype=='Casher'|| dataSrv.Userstype=='employee' ))|| 
                                 ( item.title=='Employees-Management' &&  (dataSrv.Userstype=='owner' )) ||
                                 ( item.title=='suppliers' &&  (dataSrv.Userstype=='suppliers' )) ||
                                 ( item.title=='Reports' &&  (dataSrv.Userstype=='owner' )) 

@@ -7,6 +7,7 @@ import { AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { DocumentReference } from '@angular/fire/compat/firestore';
 import { map, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { doc, getDoc } from "firebase/firestore";
 
 export interface User {
   id?:string,
@@ -43,26 +44,14 @@ export class UserService {
       }
 
       
-    //   getuser(id:  string):any{
-    //     let userr;
-    //     this.getUsers().forEach((value) => {
-    //       value.forEach(a =>{ 
-    //         if(a.id=id) 
-    //       return a.type}
-    //       )
-    //       });
 
-    // }
-    getuser(id):  Observable<User|undefined>  {
-      return  this.UserCollection.doc<User>(id).valueChanges().pipe(
-          map(idea  =>  {
-            if(idea)
-              idea.id  =  id;
-              return  idea;
-          })
-      );
-  }
+    getuser(id){
+     return this.UserCollection
+      .doc(id)
+      .get()
+      }
 
+     
 
         
  

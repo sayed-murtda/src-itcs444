@@ -12,7 +12,7 @@ export class AddPage implements OnInit {
   empName='';
   empCpr='';
   empJob='';
-  empShift='';
+  empShift=[];
   certRadio='';
   type='';
   emp:Emp={
@@ -20,10 +20,12 @@ export class AddPage implements OnInit {
     name: "",
     cpr: "",
     job: "",
-    shift: "",
+    shift:['6am-2pm','6am-2pm','6am-2pm','6am-2pm','6am-2pm','6am-2pm','6am-2pm'],
     salary:0 ,
     switchShift: []
   }; 
+
+  week=['Sanday','Moday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 
   constructor(public empServ:EmployeeService) { }
 
@@ -39,7 +41,7 @@ export class AddPage implements OnInit {
   this.empName='';
   this.empCpr='';
   this.empJob='';
-  this.empShift='';
+  this.empShift=[];
   this.certRadio='';
   }
 
