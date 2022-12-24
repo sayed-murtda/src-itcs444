@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { RequestPageRoutingModule } from './request-routing.module';
 
 import { RequestPage } from './request.page';
+import { ComponentsModule } from '../../../../app/Component/Components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RequestPageRoutingModule
+    RequestPageRoutingModule,
+    ComponentsModule
   ],
   declarations: [RequestPage]
 })
