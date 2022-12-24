@@ -62,7 +62,11 @@ const routes: Routes = [
   {
     path: 'Employee/welcome',
     loadChildren: () => import('./page/Employee/welcome/welcome.module').then( m => m.WelcomePageModule)
+  },  {
+    path: 'casher',
+    loadChildren: () => import('./page/item/casher/casher.module').then( m => m.CasherPageModule)
   },
+
 
 
 
