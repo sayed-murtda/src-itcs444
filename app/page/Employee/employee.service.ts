@@ -59,6 +59,8 @@ export class EmployeeService {
             this.UserSrv.SignUp(Employee.id,Employee.cpr).then(()=>{
               this.EmployeeCollection.doc(Employee.id).set(Employee);
               this.afs.collection('Users').doc(Employee.id).set({type: type});
+            }).catch(()=>{
+              alert('error Email');
             })
       }
 
