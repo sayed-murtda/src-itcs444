@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { AddSupPageRoutingModule } from './add-sup-routing.module';
 
 import { AddSupPage } from './add-sup.page';
+import { ComponentsModule } from '../../../../app/Component/Components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AddSupPageRoutingModule
+    AddSupPageRoutingModule,
+    ComponentsModule 
   ],
   declarations: [AddSupPage]
 })
