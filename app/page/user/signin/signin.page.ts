@@ -33,6 +33,12 @@ export class SigninPage implements OnInit {
     });
 
   }
+  next(){
+    this.dataSrv.Userstype="admin";
+    this.menuCtrl.enable(true);
+    this.route.navigateByUrl('/items');
+
+  }
 
 
   UserType(id) {
