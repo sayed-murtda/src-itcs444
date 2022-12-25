@@ -44,7 +44,7 @@ const routes: Routes = [
     loadChildren: () => import('./page/Employee/request/request.module').then( m => m.RequestPageModule)
   },
   {
-    path: 'suppliers/add/:index',
+    path: 'suppliers/add',
     loadChildren: () => import('./page/suppliers/add/add.module').then( m => m.AddPageModule)
   },
   {
@@ -62,10 +62,20 @@ const routes: Routes = [
   {
     path: 'Employee/welcome',
     loadChildren: () => import('./page/Employee/welcome/welcome.module').then( m => m.WelcomePageModule)
-  },  {
+  },
+  {
     path: 'casher',
     loadChildren: () => import('./page/item/casher/casher.module').then( m => m.CasherPageModule)
   },
+  {
+    path: 'request-item',
+    loadChildren: () => import('./page/item/request-item/request-item.module').then( m => m.RequestItemPageModule)
+  },
+  {
+    path: 'add-sup', 
+    loadChildren: () => import('./page/suppliers/add-sup/add-sup.module').then( m => m.AddSupPageModule)
+  },
+
 
 
 

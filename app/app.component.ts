@@ -8,13 +8,13 @@ import { DataService } from './data.service';
 export class AppComponent {
   disaply=false;
   public appPages = [
-    { title: 'Casher', content: [{ title: 'Casher', url: '/items'} ]},
+    { title: 'Casher', content: [{ title: 'Casher', url: '/casher'} ]},
     { title: 'Items', content: [{ title: 'Show', url: '/items' },{ title: 'edit', url: '/item/edit' },{ title: 'Remove', url: '' } ]},
     { title: 'Employees', content: [{ title: 'switchShift', url: '/switch-shift' },{title:'request', url: '/request'} ]},
     { title: 'Employees-Management', content: [{ title: 'Show', url: '/employees' },{ title: 'add', url: '/add' } ]},
-    { title: 'suppliers', content: [{ title: 'Add', url: 'suppliers/add' },{ title: 'Request', url: 'suppliers/request' },{ title: 'Show Suppliers', url: 'suppliers/show-sup' }]},
+    { title: 'suppliers', content: [{ title: 'Add', url: 'suppliers/add' },{ title: 'Add supplier', url: 'add-sup' },{ title: 'Request', url: 'suppliers/request' },{ title: 'Show Suppliers', url: 'suppliers/show-sup' }]},
     { title: 'Reports', content: [{ title: 'Show', url: '' }]},
-  ];
+  ]; 
   darkMode=false;
   moon='moon-outline';
   constructor(public dataSrv:DataService) {

@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>addSup</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item>
+    <ion-label>Supplier Name: </ion-label>
+    <ion-input [(ngModel)]="supAdd.name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Supplier Phone: </ion-label>
+    <ion-input [(ngModel)]="supAdd.phone"></ion-input>
+  </ion-item>
+<br>
+  <div align="center">
+    <ion-button (click)="insert()">Add</ion-button>
+  </div>
+
+
+</ion-content>

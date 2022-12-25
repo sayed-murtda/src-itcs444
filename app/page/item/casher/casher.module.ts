@@ -7,13 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { CasherPageRoutingModule } from './casher-routing.module';
 
 import { CasherPage } from './casher.page';
-
+import { ComponentsModule } from '../../../../app/Component/Components.module';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CasherPageRoutingModule
+    CasherPageRoutingModule, 
+    ComponentsModule
   ],
   declarations: [CasherPage]
 })
