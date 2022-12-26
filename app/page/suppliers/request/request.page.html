@@ -25,8 +25,13 @@
 
       <ion-list *ngIf="supplier">
 
-            <ion-item *ngFor="let item of supplier.items; let i=index;">
-                <ion-label>{{item.name}} <br>{{item.description}}</ion-label>
+        <div *ngFor="let item of supplier.items; let i=index;" >
+            <ion-item (click)="Opeeen(i)" >
+                <ion-label>{{item.name}} <br>{{item.description}}
+                <br> <p *ngIf="open[i]">
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam sit inventore autem, quis quo neque fugiat, maiores itaque similique facilis voluptatem sint ullam debitis expedita odio hic? Officia, nam nihil.
+                </p>
+                </ion-label>
                 <ion-avatar slot="start" (click)="goToDetail(i)">
                 <img src='{{item.image}}'>
                 </ion-avatar> 
@@ -41,8 +46,10 @@
                 </ion-button>
                 
                 </ion-avatar>
-        
+                  
             
             </ion-item>
+
+          </div>
         </ion-list>
 </ion-content>
