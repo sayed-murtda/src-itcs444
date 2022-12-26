@@ -23,12 +23,13 @@ export interface Emp {
 })
 
 export class EmployeeService {
-  private Employees: Observable<Emp[]>;
+  week=['Sanday','Moday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  public Employees: Observable<Emp[]>;
   private EmployeeCollection: AngularFirestoreCollection<Emp>;
   public Employee:Emp[] = [];
 
   constructor(private  afs:  AngularFirestore, public alertCtrl:AlertController,
-    private  afAuth: AngularFireAuth,public UserSrv:UserService) {
+    public afAuth: AngularFireAuth,public UserSrv:UserService) {
       this.EmployeeCollection  =  this.afs.collection<Emp>('employees');
       this.Employees  =  this.EmployeeCollection.snapshotChanges().pipe(
         map(actions  =>  {
@@ -39,38 +40,35 @@ export class EmployeeService {
             });
         })
     );
-
-     }
-     getEmployees():  Observable<Emp[]>  {
-      return  this.Employees;
   }
 
-    getEmployee(id:  string){
-      return this.EmployeeCollection
-      .doc(id)
-      .get()
-    }
+  getEmployees():  Observable<Emp[]>{
+    return this.Employees;
+  }
 
- 
+  getEmployee(id:string){
+    return this.EmployeeCollection.doc(id).get()
+  }
 
+  addEmployee(Employee:Emp,type){
+    if(Employee.id)
+      this.UserSrv.SignUp(Employee.id,Employee.cpr).then(()=>{
+        this.EmployeeCollection.doc(Employee.id).set(Employee);
+        this.afs.collection('Users').doc(Employee.id).set({type: type});
+      }).catch(()=>{
+        alert('error Email');
+      })
+  }
 
-        addEmployee(Employee:  Emp,type)  {
-            if(Employee.id)
-            this.UserSrv.SignUp(Employee.id,Employee.cpr).then(()=>{
-              this.EmployeeCollection.doc(Employee.id).set(Employee);
-              this.afs.collection('Users').doc(Employee.id).set({type: type});
-            }).catch(()=>{
-              alert('error Email');
-            })
-      }
+  updateEmployee(Employee:  Emp):  Promise<void>  {
+    return  this.EmployeeCollection.doc(Employee.id).update(Employee);
+  }
 
-      updateEmployee(Employee:  Emp):  Promise<void>  {
-      return  this.EmployeeCollection.doc(Employee.id).update(Employee);
-      }
+  deleteEmployee(id:  string):  Promise<void>  {
+    return  this.EmployeeCollection.doc(id).delete();
+  }
+  switchShift(i){
 
-      deleteEmployee(id:  string):  Promise<void>  {
-      return  this.EmployeeCollection.doc(id).delete();
-      }
-
+  }
 
 }
