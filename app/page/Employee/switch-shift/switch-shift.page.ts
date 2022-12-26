@@ -10,7 +10,7 @@ import { DataService } from '../../../data.service';
 })
 export class SwitchShiftPage implements OnInit {
   user=0;
-
+  day;
   constructor(public empServ:EmployeeService,public dataSrv:DataService,private alertController: AlertController) { }
 
   ngOnInit() {

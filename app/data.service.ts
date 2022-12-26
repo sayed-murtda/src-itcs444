@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import { Emp, EmployeeService } from './page/Employee/employee.service';
 
 
@@ -41,7 +42,7 @@ export class DataService {
     switchShift: []
   };
 
-  constructor(public EmpServ:EmployeeService,public route:Router) { }
+  constructor(public EmpServ:EmployeeService,public route:Router,public alertCtrl:AlertController) { }
   public SupplierItemsList: SupItem[] =[
     {id:1 , name:'nada',ItemsForSupplier:[]},
     {id:2 , name:'Al-marai',ItemsForSupplier:[]}
@@ -85,5 +86,13 @@ users=[
             });
   }
 
+  async MassegeBox(mesege:any) {
+    const alert =await   this.alertCtrl.create({
+               header: 'Workshops',
+               message: mesege,
+               buttons: ['OK']
+        });
+        alert.present();
+      }
 
 }

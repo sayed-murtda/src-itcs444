@@ -2,90 +2,37 @@
 
 <ion-content>
     <h1 class="ion-padding">Switch</h1>
+    <ion-label>{{dataSrv.emp |json}}</ion-label>
 
-    <ion-accordion-group>
-        <ion-accordion *ngFor="let day of this.empServ.week, let i = index">
-            <ion-item slot="header" color="light">
-                <ion-label>{{day}}</ion-label>
-            </ion-item>
-            <div class="ion-padding" slot="content">
-                <ion-segment [(ngModel)]="checkedValue">
-                    <br>
-                    <ion-row>
-                        <ion-segment-button (click)="showAvailable(i)" value="6am-2pm">
-                            <ion-label>6am-2pm</ion-label>
-                        </ion-segment-button>
-                        <ion-segment-button (click)="showAvailable1(i)" value="2pm-10pm">
-                            <ion-label>2pm-10pm</ion-label>
-                        </ion-segment-button>
-                    </ion-row>
-                    <ion-row>
-                        <ion-segment-button (click)="showAvailable2(i)" value="4pm-12pm">
-                            <ion-label>4pm-12pm</ion-label>
-                        </ion-segment-button>
-                        <ion-segment-button (click)="showAvailable3(i)" value="holiday">
-                            <ion-label>Ho</ion-label>
-                        </ion-segment-button>
-                    </ion-row>
-                </ion-segment>
-            </div>
-        </ion-accordion>
-        <ion-button></ion-button>
-    </ion-accordion-group>
-    <!-- <br><br><br><br>
-    <div *ngFor="let item of this.empServ.week; let i =index">
-        <ion-item>{{item}} :</ion-item> <br>
-        <ion-segment [(ngModel)]="dataSrv.emp.shift[i]" [disabled]="true">
-            <br>
-            <ion-segment-button value="6am-2pm">
-                <ion-label>6am-2pm</ion-label>
-            </ion-segment-button>
-            <ion-segment-button value="2pm-10pm">
-                <ion-label>2pm-10pm</ion-label>
-            </ion-segment-button>
-            <ion-segment-button value="4pm-12pm">
-                <ion-label>4pm-12pm</ion-label>
-            </ion-segment-button>
-            <ion-segment-button value="holiday">
-                <ion-label>Ho</ion-label>
-            </ion-segment-button>
-        </ion-segment>
-    </div>
+    <ion-list>
+        <ion-item>
+          <ion-label>Day :</ion-label>
+          <ion-select interface="popover"    [(ngModel)]="day" >
+            <ion-select-option value="0">Sunday</ion-select-option>
+            <ion-select-option value="1">Monday</ion-select-option>
+            <ion-select-option value="2">Tuesday </ion-select-option>
+            <ion-select-option value="3">Wednesday </ion-select-option>
+            <ion-select-option value="4">Thursday </ion-select-option>
+            <ion-select-option value="5">Friday</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
 
-    <ion-card *ngFor="let employee of this.empServ.Employees | async, let i=index">
-        <ion-card-header>
-            <ion-card-subtitle>{{employee.job}}</ion-card-subtitle>
-            <ion-row>
-                <ion-col>
-                    <ion-card-title>{{employee.name}}</ion-card-title>
-                    <ion-card-subtitle>Shift: {{employee.shift}}</ion-card-subtitle>
-                </ion-col>
-            </ion-row>
-            <ion-row>
-                <ion-col>
-                    <ion-button (click)="switchShift(i)">
-                        request Switch
-                    </ion-button>
-                </ion-col>
-            </ion-row>
-        </ion-card-header>
-    </ion-card>
-    <ion-card *ngFor="let employee of this.empServ.Employees | async, let i=index">
-        <ion-card-header>
-            <ion-card-subtitle>{{employee.job}}</ion-card-subtitle>
-            <ion-row>
-                <ion-col>
-                    <ion-card-title>{{employee.name}}</ion-card-title>
-                    <ion-card-subtitle>Shift: {{employee.shift}}</ion-card-subtitle>
-                </ion-col>
-            </ion-row>
-            <ion-row>
-                <ion-col>
-                    <ion-button (click)="switchShift(i)">
-                        request Switch
-                    </ion-button>
-                </ion-col>
-            </ion-row>
-        </ion-card-header>
-    </ion-card> -->
+      <ion-list  *ngIf="day">
+
+      <ion-item>
+        <ion-label>You Shift </ion-label>
+        <ion-label>{{dataSrv.emp.shift[day]}} </ion-label>
+      </ion-item>
+
+        <ion-item *ngFor="let emp of empServ.getEmployees() | async">
+            <ion-label> {{emp.name}}</ion-label>
+            <ion-label> {{emp.shift[day]}}</ion-label>
+            <ion-button  expand="block"  shape="round">
+               Shift
+            </ion-button>
+        </ion-item>
+      </ion-list>
+
+  
 </ion-content>

@@ -14,7 +14,7 @@ export class AddPage implements OnInit {
     id: "",
     name: "",
     cpr: "",
-    job: "",
+    job: "Casher",
     shift:['6am-2pm','6am-2pm','6am-2pm','6am-2pm','6am-2pm','6am-2pm','6am-2pm'],
     salary:0 ,
     switchShift: []
@@ -29,7 +29,11 @@ export class AddPage implements OnInit {
   }
 
   add(){
-    this.empServ.addEmployee(this.emp,this.type);
+    if(this.emp.job=="Casher")
+    this.empServ.addEmployee(this.emp,'Casher')
+    else{
+      this.empServ.addEmployee(this.emp,'employee')
+    }
     this.reset();
   }
 

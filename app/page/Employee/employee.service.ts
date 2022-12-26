@@ -60,7 +60,13 @@ export class EmployeeService {
     
 
     
-   
+      if(Employee.id)
+        this.UserSrv.SignUp(Employee.id,Employee.cpr).then(()=>{
+           this.EmployeeCollection.doc(Employee.id).set(Employee).then(()=>{
+              this.afs.collection('Users').doc(Employee.id).set({type: type})
+              this.MassegeBox('done add');
+           })
+         }).catch(()=> this.MassegeBox('error add') )
   }
 
   updateEmployee(Employee:  Emp):  Promise<void>  {
@@ -77,5 +83,12 @@ export class EmployeeService {
   switchShift(i){
 
   }
-
+  async MassegeBox(mesege:any) {
+    const alert =await   this.alertCtrl.create({
+               header: 'Workshops',
+               message: mesege,
+               buttons: ['OK']
+        });
+        alert.present();
+      }
 }

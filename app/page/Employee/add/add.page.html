@@ -13,10 +13,18 @@
             <ion-label>Email: </ion-label>
             <ion-input  type="email" [(ngModel)]="emp.id"></ion-input>
         </ion-item>
-        <ion-item>
-            <ion-label>Job: </ion-label>
-            <ion-input [(ngModel)]="emp.job"></ion-input>
-        </ion-item>
+
+        <ion-list>
+            <ion-item>
+              <ion-label>Job :</ion-label>
+              <ion-select interface="popover"  [(ngModel)]="emp.job">
+                <ion-select-option value="Casher" >Casher</ion-select-option>
+                <ion-select-option value="Cleaner">Cleaner</ion-select-option>
+                <ion-select-option value="security">security</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+
         <ion-item>
             <ion-label>Salary</ion-label>
             <ion-input type="number" [(ngModel)]="emp.salary" ></ion-input>
@@ -51,26 +59,6 @@
         
     </ion-list>
     
-
-    <ion-list>
-        <ion-item lines="none">Type: </ion-item>
-
-        <ion-radio-group [(ngModel)]="type">
-            <ion-item>
-                <ion-label>Employee-Casher</ion-label>
-                <ion-radio slot="start"  value="Casher"></ion-radio>
-            </ion-item>
-            <ion-item>
-                <ion-label>Employee-other</ion-label>
-                <ion-radio slot="start"  value="employee"></ion-radio>
-            </ion-item>
-            <ion-item>
-                <ion-label>Supervisors</ion-label>
-                <ion-radio slot="start"  value="supervisors"></ion-radio>
-            </ion-item>
-        </ion-radio-group>
-        
-    </ion-list>
     <ion-button expand="full" color="secondary" (click)="add()">add</ion-button>
 
 
