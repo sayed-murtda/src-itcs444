@@ -21,6 +21,7 @@ export class AddPage implements OnInit {
     supplyPrice: "",
     image: "",
     supplier:"",
+    qty_Requests:0
   }
 
   constructor(public ActRouter:ActivatedRoute , public data:DataService,public SupSrv: SupServiceService) { }

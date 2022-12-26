@@ -26,4 +26,18 @@ export class RequestPage implements OnInit {
 
 
 
+
+
+  goToDetail(i){}
+
+  subQty(i){}
+
+  addQty(i){}
+
+  makeDuble(i){}
+
+  deleteItem(i){}
+
+
+
 }

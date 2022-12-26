@@ -11,13 +11,41 @@
         </ion-item>
       </ion-list>
 
-      <ion-list *ngIf="supplier">
-        {{supplier.items | json}}
-        <ion-list *ngFor="let item of supplier.items">
+      <!-- <ion-list *ngIf="supplier"> -->
+        <!-- {{supplier.items | json}} -->
+        <!-- <ion-list *ngFor="let item of supplier.items">
           <ion-item>
             <ion-label>{{item.name}}</ion-label>
           </ion-item>
         </ion-list>
-      </ion-list>
+      </ion-list> -->
 
+
+
+
+      <ion-list *ngIf="supplier">
+
+            <ion-item *ngFor="let item of supplier.items; let i=index;">
+                <ion-label>{{item.name}} <br>{{item.description}}</ion-label>
+                <ion-avatar slot="start" (click)="goToDetail(i)">
+                <img src='{{item.image}}'>
+                </ion-avatar> 
+                <ion-item>
+                    <ion-button fill="clear" (click)="subQty(i)"><ion-icon name="remove-outline"></ion-icon></ion-button>
+                    <ion-label>{{item.qty_Requests}}</ion-label>
+                    <ion-button fill="clear" (click)="addQty(i)"><ion-icon name="add-outline"></ion-icon></ion-button>
+                </ion-item>
+                <ion-avatar slot="end" *ngIf="View">
+                <ion-button fill="clear" (click)="makeDuble(i)">
+                    <ion-icon name="copy-outline"></ion-icon>
+                </ion-button>
+                
+                </ion-avatar>
+            
+                <ion-div solt="end" *ngIf="Delete">
+                <ion-button color="danger" (click)="deleteItem(i)">Del</ion-button>
+                </ion-div>
+            
+            </ion-item>
+        </ion-list>
 </ion-content>
