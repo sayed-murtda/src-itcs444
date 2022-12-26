@@ -28,4 +28,13 @@
   </div>
 
 
+  <h2>Suppliers list: </h2>
+  <br>
+
+  <ion-item *ngFor="let supplier of data.sup | async">
+
+    <ion-label>{{supplier.name}}</ion-label>
+
+  </ion-item>
+
 </ion-content>

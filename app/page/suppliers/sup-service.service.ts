@@ -72,8 +72,19 @@ addsup(sup:supplier)  {
       return this.supFire.doc(sup.id).update({ ...sup });
     }
 
-    addItem(item: item){
+
+      getSuppliers(): Observable<supplier[]> {
+          return this.sup;
+        }
       
-    }
+
+      getSupplier(id:string){
+        return this.supFire.doc(id).get()
+      }
+
+      updateEmployee(id, item: any[]):  Promise<void>  {
+        return  this.supFire.doc(id).update({items: item});
+      }
+      
   
 }

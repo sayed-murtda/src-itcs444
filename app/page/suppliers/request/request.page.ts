@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { supplier, SupServiceService } from '../sup-service.service';
 
 @Component({
   selector: 'app-request',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RequestPage implements OnInit {
 
-  constructor() { }
+  constructor(private data: SupServiceService) {}
+  
 
   ngOnInit() {
   }
+
+  supplier_ID: any;
+  supplier: any;
+
+  display_sup_items(){
+    this.data.getSupplier(this.supplier_ID).subscribe(item => {
+      this.supplier = item.data();
+    }) 
+  }
+
+
+
 
 }
