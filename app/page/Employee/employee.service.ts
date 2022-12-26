@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
 import { AlertController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { UserService } from '../user/user.service';
-import { DataService } from '../../data.service';
 
 export interface Emp {
   id?: string;
@@ -36,7 +35,7 @@ export class EmployeeService {
   public Employee:Emp[] = [];
 
   constructor(private  afs:  AngularFirestore, public alertCtrl:AlertController,
-    public afAuth: AngularFireAuth,public UserSrv:UserService, public dataSrv:DataService) {
+    public afAuth: AngularFireAuth,public UserSrv:UserService) {
       this.EmployeeCollection  =  this.afs.collection<Emp>('employees');
       this.Employees  =  this.EmployeeCollection.snapshotChanges().pipe(
         map(actions  =>  {

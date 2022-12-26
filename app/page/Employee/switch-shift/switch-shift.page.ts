@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { EmployeeService } from '../employee.service';
 import { DataService } from '../../../data.service';
-import { CheckboxRequiredValidator } from '@angular/forms';
 
 @Component({
   selector: 'app-switch-shift',

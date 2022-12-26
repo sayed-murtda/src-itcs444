@@ -20,7 +20,7 @@ export class UserService {
 
 
   constructor(private  afs:  AngularFirestore, 
-    private  afAuth: AngularFireAuth,) { 
+    private  afAuth: AngularFireAuth) { 
       this.UserCollection  =  this.afs.collection<User>('Users');
       this.Users  =  this.UserCollection.snapshotChanges().pipe(
           map(actions  =>  {
