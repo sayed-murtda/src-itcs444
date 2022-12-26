@@ -11,8 +11,8 @@ export class AppComponent {
     { title: 'Casher', content: [{ title: 'Casher', url: '/casher'} ]},
     { title: 'Items', content: [{ title: 'Show', url: '/items' },{ title: 'edit', url: '/item/edit' },{ title: 'Remove', url: '' } ]},
     { title: 'Employees', content: [{ title: 'switchShift', url: '/switch-shift' },{title:'request', url: '/request'} ]},
-    { title: 'Employees-Management', content: [{ title: 'Show', url: '/employees' },{ title: 'add', url: '/add' } ]},
-    { title: 'suppliers', content: [{ title: 'Add', url: 'suppliers/add' },{ title: 'Add supplier', url: 'add-sup' },{ title: 'Request', url: 'suppliers/request' },{ title: 'Show Suppliers', url: 'suppliers/show-sup' }]},
+    { title: 'Management', content: [{ title: 'ShowEmployee', url: '/employees' },{ title: 'addEmployee', url: '/add' },{ title: 'addsuppliers', url: '/add-sup' },{ title: 'addEmployee', url: '/add' },{ title: 'Request Supplier', url: 'suppliers/request' }, ]},
+    { title: 'suppliers', content: [{ title: 'Add-items', url: 'suppliers/add' },{ title: 'Show items', url: 'sup-items' },{ title: 'Show Suppliers', url: 'suppliers/show-sup' }]},
     { title: 'Reports', content: [{ title: 'Show', url: '' }]},
   ]; 
   darkMode=false;

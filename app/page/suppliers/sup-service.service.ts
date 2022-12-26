@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore} from '@angular/fire/compat/firestore';
 import { AngularFirestoreCollection } from '@angular/fire/compat/firestore';
-import { map, take } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { UserService } from '../user/user.service';
-// this interface discripe the structure supplier array in firebase
+import { AlertController } from '@ionic/angular';
+
 
 export interface supplier {
   id?: string,
@@ -12,16 +13,28 @@ export interface supplier {
   phone: string,
   pass: string,
   items: item[],
+  Requests: Request[]
 }
 
 interface item{
   id: any;
   name: string;
+  categories:string;
   description: string;
   qtyPerCarton: number;
   price: number;
   supplyPrice: number;
   image: string;
+  qty_Requests?:number;
+  Supplier:string;
+}
+
+interface Request{
+  id: any;
+  items: item[],
+  total_price:number;
+  Status:string;
+  date:string;
 }
 
 @Injectable({
@@ -36,7 +49,7 @@ export class SupServiceService {
   // this array will have the variables of suppliers (ID, name and phone )
   public supAdd: supplier = {} as supplier;
 
-  constructor(private afs: AngularFirestore, public UserSrv: UserService) {
+  constructor(private afs: AngularFirestore, public UserSrv: UserService,public alertCtrl:AlertController) {
     // start putting firebase stuff for adding supplier
       this.supFire= this.afs.collection<supplier>('supplier');
       this.sup= this.supFire.snapshotChanges().pipe(
@@ -62,9 +75,9 @@ addsup(sup:supplier)  {
   this.UserSrv.SignUp(sup.id,sup.pass).then(()=>{
     this.supFire.doc(sup.id).set(sup);
     this.afs.collection('Users').doc(sup.id).set({type: type});
-    alert("supplier has been added")
+    this.MassegeBox("supplier has been added")
   }).catch(()=>{
-    alert('error Email');
+    this.MassegeBox('error add');
   })
 }
 
@@ -85,6 +98,24 @@ addsup(sup:supplier)  {
       updateEmployee(id, item: any[]):  Promise<void>  {
         return  this.supFire.doc(id).update({items: item});
       }
+
+      additem(id, items: any[]):  Promise<void>  {
+        return  this.supFire.doc(id).update({items: items});
+      }
+
+
+
+      async MassegeBox(mesege:any) {
+        const alert =await   this.alertCtrl.create({
+                   header: 'Workshops',
+                   message: mesege,
+                   buttons: ['OK']
+            });
+            alert.present();
+          }
       
   
+
+
+
 }

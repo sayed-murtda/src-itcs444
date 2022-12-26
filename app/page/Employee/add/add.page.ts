@@ -17,7 +17,8 @@ export class AddPage implements OnInit {
     job: "Casher",
     shift:['6am-2pm','6am-2pm','6am-2pm','6am-2pm','6am-2pm','6am-2pm','6am-2pm'],
     salary:0 ,
-    switchShift: []
+    switchShift: [],
+    StatusSwitch: []
   }; 
 
   week=['Sanday','Moday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
@@ -45,7 +46,8 @@ export class AddPage implements OnInit {
       job: "",
       shift:['6am-2pm','6am-2pm','6am-2pm','6am-2pm','6am-2pm','6am-2pm','6am-2pm'],
       salary:0 ,
-      switchShift: []
+      switchShift: [],
+      StatusSwitch:[]
     }; 
   }
 

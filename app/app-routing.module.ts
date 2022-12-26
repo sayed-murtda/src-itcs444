@@ -74,7 +74,11 @@ const routes: Routes = [
   {
     path: 'add-sup', 
     loadChildren: () => import('./page/suppliers/add-sup/add-sup.module').then( m => m.AddSupPageModule)
+  },  {
+    path: 'sup-items',
+    loadChildren: () => import('./page/suppliers/sup-items/sup-items.module').then( m => m.SupItemsPageModule)
   },
+
 
 
 

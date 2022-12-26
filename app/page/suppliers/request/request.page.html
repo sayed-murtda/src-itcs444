@@ -12,7 +12,12 @@
       </ion-list>
 
       <ion-list *ngIf="supplier">
-        {{supplier.name}}
+        {{supplier.items | json}}
+        <ion-list *ngFor="let item of supplier.items">
+          <ion-item>
+            <ion-label>{{item.name}}</ion-label>
+          </ion-item>
+        </ion-list>
       </ion-list>
 
 </ion-content>

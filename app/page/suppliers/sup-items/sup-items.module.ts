@@ -5,18 +5,18 @@ import { ComponentsModule } from '../../../../app/Component/Components.module';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AddPageRoutingModule } from './add-routing.module';
+import { SupItemsPageRoutingModule } from './sup-items-routing.module';
 
-import { AddPage } from './add.page';
+import { SupItemsPage } from './sup-items.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AddPageRoutingModule,
+    SupItemsPageRoutingModule,
     ComponentsModule
   ],
-  declarations: [AddPage]
+  declarations: [SupItemsPage]
 })
-export class AddPageModule {}
+export class SupItemsPageModule {}

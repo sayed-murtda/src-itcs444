@@ -1,29 +1,34 @@
-<!-- <app-headerpage title="Add supplier"></app-headerpage> -->
-
+<app-headerpage title="Add Items"></app-headerpage>
 
 
 <ion-content>
-    
-        <ion-item>
-            <ion-label>ID: </ion-label>
-            <ion-input [(ngModel)]="id"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label>Name: </ion-label>
-            <ion-input [(ngModel)]="name"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label>Price: </ion-label>
-            <ion-input [(ngModel)]="price"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label>Description: </ion-label>
-            <ion-input [(ngModel)]="desc"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label>Items per carton: </ion-label>
-            <ion-input [(ngModel)]="itemCar"></ion-input> 
-        </ion-item>
-    <ion-button expand="full" color="secondary" (click)="AddItems()" >Add</ion-button>
-
+   
+      <ion-list>
+            <ion-item>
+                <ion-label>Name: </ion-label>
+                <ion-input type="text" [(ngModel)]="item.name"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label>categories: </ion-label>
+                <ion-input type="text" [(ngModel)]="item.categories"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label>description: </ion-label>
+                <ion-input  type="text" [(ngModel)]="item.description"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label>Items per carton: </ion-label>
+                <ion-input type="number" [(ngModel)]="item.qtyPerCarton"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label>Price: </ion-label>
+                <ion-input type="number" [(ngModel)]="item.supplyPrice"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Item img(url):</ion-label>
+                <ion-input type="text"  [(ngModel)]="item.image" ></ion-input>
+              </ion-item>
+        <ion-button expand="full" color="secondary" (click)="AddItems()" >Add</ion-button>
+    </ion-list>
 </ion-content>
+

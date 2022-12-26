@@ -15,6 +15,7 @@ export interface Emp {
   shift: string[];
   salary: number;
   switchShift: switchShift[];
+  StatusSwitch: switchShift[];
 }
 
 export interface switchShift {
@@ -57,9 +58,6 @@ export class EmployeeService {
   }
 
   addEmployee(Employee:Emp,type){
-    
-
-    
       if(Employee.id)
         this.UserSrv.SignUp(Employee.id,Employee.cpr).then(()=>{
            this.EmployeeCollection.doc(Employee.id).set(Employee).then(()=>{

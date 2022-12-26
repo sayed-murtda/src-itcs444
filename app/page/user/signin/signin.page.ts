@@ -51,6 +51,8 @@ export class SigninPage implements OnInit {
             this.dataSrv.Employee(id);
           }else if(type=='owner'){
             this.route.navigateByUrl('/items');
+          }else if(type=='supplier') {
+            this.dataSrv.SetSupplier(id);
           }
       }else{
         alert('error');

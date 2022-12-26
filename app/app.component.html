@@ -16,11 +16,11 @@
 
         <ion-accordion-group class="sidebarup">
           <div *ngFor="let item of appPages">
-          <ion-accordion *ngIf="(item.title=='Items'&& (dataSrv.Userstype=='supervisors' || dataSrv.Userstype=='owner'  || dataSrv.Userstype=='admin')) || 
-                                (item.title=='Casher'&& (dataSrv.Userstype=='supervisors' || dataSrv.Userstype=='Casher'|| dataSrv.Userstype=='owner' || dataSrv.Userstype=='admin' )) ||
-                                ( item.title=='Employees' &&  (dataSrv.Userstype=='supervisors' || dataSrv.Userstype=='Casher'|| dataSrv.Userstype=='employee' || dataSrv.Userstype=='admin' ))|| 
-                                ( item.title=='Employees-Management' &&  (dataSrv.Userstype=='owner' || dataSrv.Userstype=='admin' )) ||
-                                ( item.title=='suppliers' &&  (dataSrv.Userstype=='suppliers' || dataSrv.Userstype=='admin' )) ||
+          <ion-accordion *ngIf="(item.title=='Items'&& ( dataSrv.Userstype=='owner'  || dataSrv.Userstype=='admin')) || 
+                                (item.title=='Casher'&& (dataSrv.Userstype=='Casher'|| dataSrv.Userstype=='owner' || dataSrv.Userstype=='admin' )) ||
+                                ( item.title=='Employees' &&  (dataSrv.Userstype=='Casher'|| dataSrv.Userstype=='employee' || dataSrv.Userstype=='admin' ))|| 
+                                ( item.title=='Management' &&  (dataSrv.Userstype=='owner' || dataSrv.Userstype=='admin' )) ||
+                                ( item.title=='suppliers' &&  (dataSrv.Userstype=='supplier' || dataSrv.Userstype=='admin' )) ||
                                 ( item.title=='Reports' &&  (dataSrv.Userstype=='owner' || dataSrv.Userstype=='admin' )) 
                                 " >
             

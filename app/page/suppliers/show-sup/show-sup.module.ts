@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ComponentsModule } from '../../../../app/Component/Components.module';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -13,7 +14,8 @@ import { ShowSupPage } from './show-sup.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    ShowSupPageRoutingModule
+    ShowSupPageRoutingModule,
+    ComponentsModule
   ],
   declarations: [ShowSupPage]
 })

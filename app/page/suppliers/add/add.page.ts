@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DataService } from 'src/app/data.service';
+import { DataService } from '../../../data.service';
+import { SupServiceService } from '../sup-service.service';
 
 
 @Component({
@@ -9,21 +10,32 @@ import { DataService } from 'src/app/data.service';
   styleUrls: ['./add.page.scss'],
 })
 export class AddPage implements OnInit {
-  public index=-1;
-  id=null;
-  name:any;
-  desc:any;
-  price:any;
-  itemCar:any;
 
-  constructor(public ActRouter:ActivatedRoute , public data:DataService) { }
+  
+   item:any={
+    name: "",
+    categories:"",
+    description: "",
+    qtyPerCarton: "",
+    price: "",
+    supplyPrice: "",
+    image: "",
+    supplier:"",
+  }
+
+  constructor(public ActRouter:ActivatedRoute , public data:DataService,public SupSrv: SupServiceService) { }
 
   ngOnInit() {
-    this.index = Number(this.ActRouter.snapshot.paramMap.get("index"));
   }
 
   AddItems(){
-    this.data.SupplierItemsList[this.index].ItemsForSupplier.push({ID:this.id,Name:this.name,Price:this.price,Description:this.desc,itemsPerCartoon:this.itemCar})
+    let id=this.data.supplier.id;
+    let items=this.data.supplier.items;
+    this.item.supplier=this.data.supplier.name;
+    items.push(this.item);
+    this.SupSrv.additem(id,items);
   }
+
+   
 
 }

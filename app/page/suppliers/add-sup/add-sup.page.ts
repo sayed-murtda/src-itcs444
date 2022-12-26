@@ -16,6 +16,7 @@ export class AddSupPage implements OnInit {
                         phone: '',
                         pass: '',
                         items: [],
+                        Requests:[]
                       };
 
 
@@ -32,6 +33,17 @@ export class AddSupPage implements OnInit {
 
   insert(){
     this.data.addsup(this.supAdd);
+    this.rest();
   }
     
+  rest(){
+    this.supAdd = {  id : '',
+                        name : '',
+                        phone: '',
+                        pass: '',
+                        items: [],
+                        Requests:[]
+                      };
+  }
+
 }

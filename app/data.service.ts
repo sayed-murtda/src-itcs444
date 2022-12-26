@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { Emp, EmployeeService } from './page/Employee/employee.service';
+import { supplier, SupServiceService } from './page/suppliers/sup-service.service';
 
 
 
@@ -33,16 +34,24 @@ export interface SupItem{
 export class DataService {
   Userstype='';
   emp:any={
-    id: "string",
-    name: "string",
-    cpr: "string",
-    job: "string",
-    shift: "string",
-    salary: 2423423,
+    id: "",
+    name: "",
+    cpr: "",
+    job: "",
+    shift: "",
+    salary: 0,
     switchShift: []
   };
 
-  constructor(public EmpServ:EmployeeService,public route:Router,public alertCtrl:AlertController) { }
+ supplier:any ={
+    id: "",
+    name: "",
+    phone: "",
+    pass: "",
+    items: [],
+  }
+
+  constructor(public EmpServ:EmployeeService,public route:Router,public alertCtrl:AlertController,public SupSrv : SupServiceService) { }
   public SupplierItemsList: SupItem[] =[
     {id:1 , name:'nada',ItemsForSupplier:[]},
     {id:2 , name:'Al-marai',ItemsForSupplier:[]}
@@ -80,11 +89,22 @@ users=[
     this.EmpServ.getEmployee(id).subscribe(emp => {
               if(emp){
               this.emp = emp.data();
-              console.log(emp)
               this.route.navigateByUrl('/Employee/welcome');
               }
             });
   }
+
+  SetSupplier(id){
+    this.SupSrv.getSupplier(id).subscribe(sup => {
+              if(sup){
+              this.supplier = sup.data();
+              console.log(this.supplier);
+              this.route.navigateByUrl('suppliers/add');
+              }
+            });
+  }
+
+
 
   async MassegeBox(mesege:any) {
     const alert =await   this.alertCtrl.create({
