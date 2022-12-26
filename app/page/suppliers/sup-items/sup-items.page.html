@@ -3,7 +3,7 @@
 
 <ion-content>
   {{ dataSrv.supplier| json}}
-  <ion-card *ngFor="let item of dataSrv.supplier.items ">
+  <ion-card *ngFor="let item of dataSrv.supplier.items; let i= index ">
 
     <ion-item lines="none">
             <img class="img" src="{{item.image}}">
@@ -18,10 +18,10 @@
               </ion-label>
             </ion-item>
         </ion-card-header>
+        <ion-button slot="end" (click)="delet(i)"  color="danger">
+          delet
+        </ion-button>
     </ion-item>
-    <ion-card-content>
-        <ion-label>{{item.price}} fils</ion-label>
-    </ion-card-content>
 
     </ion-card>
 

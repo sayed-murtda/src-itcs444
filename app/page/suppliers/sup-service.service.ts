@@ -113,6 +113,11 @@ addsup(sup:supplier)  {
             });
             alert.present();
           }
+
+        deletItem(id,items){
+          return  this.supFire.doc(id).update({items: items});
+
+        }
       
   
 

@@ -16,7 +16,7 @@ export class RequestPage implements OnInit {
 
   supplier_ID: any;
   supplier: any;
-
+  open:boolean[]=[]
   display_sup_items(){
     this.data.getSupplier(this.supplier_ID).subscribe(item => {
       this.supplier = item.data();
@@ -37,6 +37,10 @@ export class RequestPage implements OnInit {
   makeDuble(i){}
 
   deleteItem(i){}
+
+  Opeeen(i){
+    this.open[i]=!this.open[i];
+  }
 
 
 
