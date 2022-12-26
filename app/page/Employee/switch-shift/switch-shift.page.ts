@@ -30,19 +30,7 @@ export class SwitchShiftPage implements OnInit {
     });
   }
   showAvailable(ckeckedValue:string,i){
-    alert('6am-2pm');
-    if(ckeckedValue == '6am-2pm'){
-      alert('6am-2pm');
-    }
-    else if(ckeckedValue == '2pm-10pm'){
-
-    }
-    else if(ckeckedValue == '4pm-12pm'){
-
-    }
-    else if(ckeckedValue == 'holiday'){
-
-    }
+    alert('6am-2pm')
   }
   showAvailable1(i){
     if(i==0)
