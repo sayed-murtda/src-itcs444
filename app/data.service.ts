@@ -49,7 +49,10 @@ export class DataService {
     phone: "",
     pass: "",
     items: [],
+    Requests: []
   }
+
+
 
   constructor(public EmpServ:EmployeeService,public route:Router,public alertCtrl:AlertController,public SupSrv : SupServiceService) { }
   public SupplierItemsList: SupItem[] =[

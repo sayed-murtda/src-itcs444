@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../../../data.service';
 
 @Component({
   selector: 'app-sup-items',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SupItemsPage implements OnInit {
 
-  constructor() { }
+  constructor(public dataSrv:DataService) { }
 
   ngOnInit() {
   }

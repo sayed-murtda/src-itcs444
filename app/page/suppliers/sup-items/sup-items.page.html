@@ -2,5 +2,27 @@
 
 
 <ion-content>
+  {{ dataSrv.supplier| json}}
+  <ion-card *ngFor="let item of dataSrv.supplier.items ">
+
+    <ion-item lines="none">
+            <img class="img" src="{{item.image}}">
+        <ion-card-header>
+            <ion-card-title>
+                {{item.name}}
+            </ion-card-title>
+            <p>{{item.description}}</p>
+            <ion-item>
+              <ion-label>
+                qtyPerCarton: {{item.qtyPerCarton}} - Carton Price :  {{item.supplyPrice}}
+              </ion-label>
+            </ion-item>
+        </ion-card-header>
+    </ion-item>
+    <ion-card-content>
+        <ion-label>{{item.price}} fils</ion-label>
+    </ion-card-content>
+
+    </ion-card>
 
 </ion-content>
