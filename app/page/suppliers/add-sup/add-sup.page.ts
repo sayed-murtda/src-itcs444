@@ -1,15 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { AngularFirestore} from '@angular/fire/compat/firestore';
-import { AngularFirestoreCollection } from '@angular/fire/compat/firestore';
-import { map, take } from 'rxjs/operators';
-import { Observable } from 'rxjs';
-
-// this interface discripe the structure supplier array in firebase
-export interface supplier {
-  id?: string,
-  name: string,
-  phone: string
-}
+import { Component, OnInit } from '@angular/core'; 
+import { supplier, SupServiceService } from '../sup-service.service';
 
 
 @Component({
@@ -19,44 +9,29 @@ export interface supplier {
 })
 export class AddSupPage implements OnInit {
 
-  // these two array for dealing with firebase
-  private sup: Observable<supplier[]>;
-  private supFire: AngularFirestoreCollection<supplier>; // linked with firebase
-
+  
   // this array will have the variables of suppliers (ID, name and phone )
-  public supAdd: supplier = {} as supplier;
-
-  insert(){
-    this.supFire.add(this.supAdd).then((res)=>{
-      alert("supplier has been added")
-    });
-  }
-
+   supAdd: supplier = {  id : '',
+                        name : '',
+                        phone: '',
+                        pass: '',
+                        items: [],
+                      };
 
 
-    constructor(private afs: AngularFirestore) {
-      // start putting firebase stuff for adding supplier
-        this.supFire= this.afs.collection<supplier>('supplier');
-        this.sup= this.supFire.snapshotChanges().pipe(
-          map(actions => {
-            return actions.map(a => {
-              const data = a.payload.doc.data();
-              const id = a.payload.doc.id;
-              return { id, ...data };
-            });
-          })
-        );
-        // end putting firebase stuff for adding supplier
-      }
+
+
+
+
+
+    constructor(private data: SupServiceService) {}
     
   ngOnInit() {
   }
-  supName: any;
-  supPhone: any;
 
-// this for add supplier in firebase
-   add(sup:supplier): Promise<any> {
-          return this.supFire.add(sup); 
-      }
+
+  insert(){
+    this.data.addsup(this.supAdd);
+  }
     
 }

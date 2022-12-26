@@ -1,8 +1,4 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>addSup</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-headerpage title="Add Supplier"></app-headerpage>
 
 <ion-content> 
 
@@ -15,6 +11,17 @@
     <ion-label>Supplier Phone: </ion-label>
     <ion-input [(ngModel)]="supAdd.phone"></ion-input>
   </ion-item>
+
+  <ion-item>
+    <ion-label>Supplier Email: </ion-label>
+    <ion-input [(ngModel)]="supAdd.id"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Supplier password: </ion-label>
+    <ion-input [(ngModel)]="supAdd.pass"></ion-input>
+  </ion-item>
+
 <br>
   <div align="center">
     <ion-button (click)="insert()">Add</ion-button>
