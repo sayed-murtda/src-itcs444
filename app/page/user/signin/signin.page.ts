@@ -44,20 +44,17 @@ export class SigninPage implements OnInit {
   UserType(id) {
     this.user.getuser(id).subscribe((docRef) => { 
         let type =docRef.data()?.type;
-        console.log(docRef.data())
         if(type){
           this.menuCtrl.enable(true);
           this.dataSrv.Userstype=type;
-          if(type=='employee' || type=='Casher'  || type=='supervisors'  ){
+          if(type=='employee' || type=='Casher'   ){
             this.dataSrv.Employee(id);
           }else if(type=='owner'){
             this.route.navigateByUrl('/items');
           }
-          else{
-          this.route.navigateByUrl('/items');
-          }
-
-      }
+      }else{
+        alert('error');
+     }
     })
 
   }

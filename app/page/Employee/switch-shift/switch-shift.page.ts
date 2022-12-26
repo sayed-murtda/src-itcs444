@@ -18,16 +18,18 @@ export class SwitchShiftPage implements OnInit {
   }
 
   async switchShift(i:number){
-    this.empServ.Employee[i].switchShift.push(this.user);
-    const alert = await this.alertController.create({
-      subHeader: 'Request Successfull',
-      message: 'Your switch request has been send to '+this.empServ.Employee[i].name+' Successfully!',
-      buttons: ['OK'],
-    });
-    await alert.present();
-    this.empServ.Employee[i].switchShift.forEach(element => {
-      console.log(element);  
-    });
+
+    // this.empServ.Employee[i].switchShift.push(this.user);
+    // const alert = await this.alertController.create({
+    //   subHeader: 'Request Successfull',
+    //   message: 'Your switch request has been send to '+this.empServ.Employee[i].name+' Successfully!',
+    //   buttons: ['OK'],
+    // });
+    // await alert.present();
+    // this.empServ.Employee[i].switchShift.forEach(element => {
+    //   console.log(element);  
+    // });
+
   }
   showAvailable(ckeckedValue:string,i){
     alert('6am-2pm')

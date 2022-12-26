@@ -8,12 +8,7 @@ import { Emp, EmployeeService } from '../employee.service';
 })
 export class AddPage implements OnInit {
   
-  id=this.empServ.Employee.length;
-  empName='';
-  empCpr='';
-  empJob='';
-  empShift=[];
-  certRadio='';
+
   type='';
   emp:Emp={
     id: "",
@@ -35,14 +30,19 @@ export class AddPage implements OnInit {
 
   add(){
     this.empServ.addEmployee(this.emp,this.type);
+    this.reset();
   }
 
   reset(){
-  this.empName='';
-  this.empCpr='';
-  this.empJob='';
-  this.empShift=[];
-  this.certRadio='';
+    this.emp={
+      id: "",
+      name: "",
+      cpr: "",
+      job: "",
+      shift:['6am-2pm','6am-2pm','6am-2pm','6am-2pm','6am-2pm','6am-2pm','6am-2pm'],
+      salary:0 ,
+      switchShift: []
+    }; 
   }
 
 }

@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { AlertController } from '@ionic/angular';
 
 import { AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { DocumentReference } from '@angular/fire/compat/firestore';
-import { map, take } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { doc, getDoc } from "firebase/firestore";
 
 export interface User {
   id?:string,
@@ -21,8 +19,8 @@ export class UserService {
   private UserCollection: AngularFirestoreCollection<User>;
 
 
-  constructor(private  afs:  AngularFirestore, public alertCtrl:AlertController,
-    private  afAuth: AngularFireAuth) { 
+  constructor(private  afs:  AngularFirestore, 
+    private  afAuth: AngularFireAuth,) { 
       this.UserCollection  =  this.afs.collection<User>('Users');
       this.Users  =  this.UserCollection.snapshotChanges().pipe(
           map(actions  =>  {
@@ -67,4 +65,7 @@ export class UserService {
     SignUp(newEmail: string, newPassword: string): Promise<any> {
       return this.afAuth.createUserWithEmailAndPassword(newEmail, newPassword);
     }
+
+    
+
 }

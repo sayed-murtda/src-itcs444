@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore} from '@angular/fire/compat/firestore';
 import { AngularFirestoreCollection } from '@angular/fire/compat/firestore';
-import { DocumentReference } from '@angular/fire/compat/firestore';
-import { map, take } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { AlertController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { UserService } from '../user/user.service';
+import { DataService } from '../../data.service';
 
 export interface Emp {
   id?: string;
@@ -15,8 +15,15 @@ export interface Emp {
   job: string;
   shift: string[];
   salary: number;
-  switchShift: number[];
+  switchShift: switchShift[];
 }
+
+export interface switchShift {
+  id: string;
+  day: string;
+  status: boolean;
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +36,7 @@ export class EmployeeService {
   public Employee:Emp[] = [];
 
   constructor(private  afs:  AngularFirestore, public alertCtrl:AlertController,
-    public afAuth: AngularFireAuth,public UserSrv:UserService) {
+    public afAuth: AngularFireAuth,public UserSrv:UserService, public dataSrv:DataService) {
       this.EmployeeCollection  =  this.afs.collection<Emp>('employees');
       this.Employees  =  this.EmployeeCollection.snapshotChanges().pipe(
         map(actions  =>  {
@@ -51,13 +58,10 @@ export class EmployeeService {
   }
 
   addEmployee(Employee:Emp,type){
-    if(Employee.id)
-      this.UserSrv.SignUp(Employee.id,Employee.cpr).then(()=>{
-        this.EmployeeCollection.doc(Employee.id).set(Employee);
-        this.afs.collection('Users').doc(Employee.id).set({type: type});
-      }).catch(()=>{
-        alert('error Email');
-      })
+    
+
+    
+   
   }
 
   updateEmployee(Employee:  Emp):  Promise<void>  {
@@ -65,7 +69,11 @@ export class EmployeeService {
   }
 
   deleteEmployee(id:  string):  Promise<void>  {
-    return  this.EmployeeCollection.doc(id).delete();
+    return  this.EmployeeCollection.doc(id).delete().then(()=>{
+      this.afs.collection('Users').doc(id).delete();
+    }
+    );
+
   }
   switchShift(i){
 
