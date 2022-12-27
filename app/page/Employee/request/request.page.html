@@ -2,7 +2,39 @@
 
 <ion-content>
     <h1 class="ion-padding">Requests</h1>
-    <ion-item *ngFor="let employee of this.empServ.Employees | async">
-        {{employee.name}}
-    </ion-item>
+    <ion-list >
+
+     <div *ngFor="let req of this.empServ.Requests | async" >
+        <ion-item *ngIf="req.id_form == dataSrv.emp.id && req.status==0">
+
+    
+                  <ion-item lines="none">
+                    <p> <b> My Requests to:</b> {{req.id_to}}  <b>-Day:</b> {{week[req.day]}}
+                       <br>  <b>My Shift:</b> {{req.shift_from}} <b>-to Shift:</b> {{req.shift_to}}
+                    </p>
+                </ion-item>
+                    <ion-button slot="end" (click)="cancel(req.id,req.day)" color="danger">
+                        cancel
+                    </ion-button>
+        </ion-item>
+    </div>
+      
+    </ion-list>
+
+
+    <ion-list *ngFor="let req of this.empServ.Requests | async">
+     
+        <ion-item *ngIf="req.id_to == dataSrv.emp.id && req.status==0">
+
+    
+                  <ion-item lines="none">
+                    <p> <b> My Requests from:</b> {{req.id_form}}  <b>-Day:</b> {{week[req.day]}}
+                       <br>  <b>My Shift:</b> {{req.shift_to}} <b>-to Shift:</b> {{req.shift_from}}
+                    </p>
+                </ion-item>
+                    <ion-button slot="end" (click)="accept(req.id,req.day)" color="success">accept</ion-button>
+                    <ion-button slot="end" (click)="Reject(req.id,req.day)" color="danger">Reject</ion-button>
+        </ion-item>
+      
+    </ion-list>
 </ion-content>
