@@ -137,6 +137,54 @@ export class EmployeeService {
     this.EmployeeCollection.doc(user_id).update({StatusSwitch:array})
     return  this.RequestsCollection.doc(id).update({status:-1});
   }
+  
+  RejectRequests(from,day,id_req)  {
+    console.log(from);
+    let array=[-1,-1,-1,-1,-1,-1,-1];
+    let ar;
+    this.getEmployee(from).subscribe((res)=>{
+      ar=res.data();
+      array=ar.StatusSwitch;
+      array[day]=-1;
+      this.EmployeeCollection.doc(from).update({StatusSwitch:array})
+      return  this.RequestsCollection.doc(id_req).delete();
+    })
+   
+  }
+
+  AcceptRequests(from,day,id_req,shift_from,shift_to,to)  {
+    console.log(from);
+    let array=[-1,-1,-1,-1,-1,-1,-1];
+    let shift;
+    let ar;
+
+    let shift2;
+    let ar2;
+    this.getEmployee(from).subscribe((res)=>{
+      ar=res.data();
+      array=ar.StatusSwitch;
+      shift=ar.shift;
+      shift[day]=shift_to;
+      array[day]=-1;
+      this.EmployeeCollection.doc(from).update({StatusSwitch:array,shift:shift})
+
+      this.getEmployee(to).subscribe((res2)=>{
+        ar2=res2.data();
+        shift2=ar2.shift;
+        shift2[day]=shift_from;
+        this.EmployeeCollection.doc(to).update({shift:shift2})
+        return  this.RequestsCollection.doc(id_req).delete();
+  
+  
+        
+      })
+      
+    })
+   
+  }
+
+
+
 
 
     
