@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
-import { EmployeeService } from '../employee.service';
+import { EmployeeService, switchShift } from '../employee.service';
 import { DataService } from '../../../data.service';
 
 @Component({
@@ -11,25 +11,20 @@ import { DataService } from '../../../data.service';
 export class SwitchShiftPage implements OnInit {
   user=0;
   day;
+  switchShift:switchShift= {
+    id_form: "",
+    shift_from: "",
+    id_to: "",
+    shift_to: "",
+    day: "",
+    status: 0,
+  }
   constructor(public empServ:EmployeeService,public dataSrv:DataService,private alertController: AlertController) { }
 
   ngOnInit() {
   }
 
-  async switchShift(i:number){
 
-    // this.empServ.Employee[i].switchShift.push(this.user);
-    // const alert = await this.alertController.create({
-    //   subHeader: 'Request Successfull',
-    //   message: 'Your switch request has been send to '+this.empServ.Employee[i].name+' Successfully!',
-    //   buttons: ['OK'],
-    // });
-    // await alert.present();
-    // this.empServ.Employee[i].switchShift.forEach(element => {
-    //   console.log(element);  
-    // });
-
-  }
   showAvailable(ckeckedValue:string,i){
     alert('6am-2pm')
   }
@@ -42,5 +37,23 @@ export class SwitchShiftPage implements OnInit {
   }
   showAvailable3(i){
     alert('Holiday');
+  }
+
+  Shift(to,day,shift){
+  if(this.dataSrv.emp.StatusSwitch[day]!=0){
+      this.switchShift={
+        id_form: this.dataSrv.emp.id,
+        shift_from: this.dataSrv.emp.shift[day],
+        id_to: to,
+        shift_to: shift,
+        day: day,
+        status: 0 ,
+      }
+      this.dataSrv.emp.StatusSwitch[day]=0;
+      this.empServ.switchShift(this.switchShift,this.dataSrv.emp.StatusSwitch);
+  }else{
+      this.dataSrv.MassegeBox('You have already sent a change request for the same day and it is still pending')
+    }
+
   }
 }

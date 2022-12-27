@@ -26,14 +26,14 @@
       </ion-item>
 
         <div *ngFor="let emp of empServ.getEmployees() | async">
-            <ion-list *ngIf="emp.shift[day]!=dataSrv.emp.shift[day] && emp.job==dataSrv.emp.job">
+            <ion-item *ngIf="emp.shift[day]!=dataSrv.emp.shift[day] && emp.job==dataSrv.emp.job">
                 
                 <ion-label> {{emp.name}}</ion-label>
                 <ion-label> {{emp.shift[day]}}</ion-label>
-                <ion-button  expand="block"  shape="round">
+                <ion-button color="warning" (click)="Shift(emp.id,day,emp.shift[day])"  shape="round">
                     Shift
                 </ion-button>
-            </ion-list>
+            </ion-item>
         </div>
       </ion-list>
 

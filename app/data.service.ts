@@ -88,23 +88,23 @@ users=[
     this.SupplierItemsList[index].ItemsForSupplier.push({ID:item_id , Name:item_name, Price:item_price,Description:item_desc,itemsPerCartoon:ite_per_carton})
   }
 
-  Employee(id){
-    this.EmpServ.getEmployee(id).subscribe(emp => {
+  SetEmployee(id){
+    this.EmpServ.getEmployee2(id).subscribe(emp => {
               if(emp){
-              this.emp = emp.data();
-              this.route.navigateByUrl('/Employee/welcome');
+              this.emp = emp;
               }
             });
+            this.route.navigateByUrl('/Employee/welcome');
+
   }
 
   SetSupplier(id){
-    this.SupSrv.getSupplier(id).subscribe(sup => {
+    this.SupSrv.getSupplier2(id).subscribe(sup => {
               if(sup){
-              this.supplier = sup.data();
-              console.log(this.supplier);
-              this.route.navigateByUrl('suppliers/add');
+              this.supplier = sup;
               }
             });
+            this.route.navigateByUrl('suppliers/add');
   }
 
 

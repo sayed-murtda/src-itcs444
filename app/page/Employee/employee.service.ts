@@ -14,14 +14,17 @@ export interface Emp {
   job: string;
   shift: string[];
   salary: number;
-  switchShift: switchShift[];
-  StatusSwitch: switchShift[];
+  StatusSwitch: number[];
 }
 
 export interface switchShift {
-  id: string;
+  id?:string;
+  id_form: string;
+  shift_from: string;
+  id_to:string;
+  shift_to: string;
   day: string;
-  status: boolean;
+  status: number;
 }
 
 
@@ -35,8 +38,12 @@ export class EmployeeService {
   private EmployeeCollection: AngularFirestoreCollection<Emp>;
   public Employee:Emp[] = [];
 
+  public Requests: Observable<switchShift[]>;
+  private RequestsCollection: AngularFirestoreCollection<switchShift>;
+
   constructor(private  afs:  AngularFirestore, public alertCtrl:AlertController,
     public afAuth: AngularFireAuth,public UserSrv:UserService) {
+
       this.EmployeeCollection  =  this.afs.collection<Emp>('employees');
       this.Employees  =  this.EmployeeCollection.snapshotChanges().pipe(
         map(actions  =>  {
@@ -47,15 +54,44 @@ export class EmployeeService {
             });
         })
     );
+
+    this.RequestsCollection  =  this.afs.collection<switchShift>('switchShift');
+      this.Requests  =  this.RequestsCollection.snapshotChanges().pipe(
+        map(actions  =>  {
+            return  actions.map(a  =>  {
+                const  data  =  a.payload.doc.data();
+                const  id  =  a.payload.doc.id;
+                return  {    id, ...data  };
+            });
+        })
+    );
+
+
+
   }
 
   getEmployees():  Observable<Emp[]>{
     return this.Employees;
   }
 
+ 
+
+  
+
   getEmployee(id:string){
-    return this.EmployeeCollection.doc(id).get()
+    return this.EmployeeCollection.doc<Emp>(id).get()
   }
+
+  getEmployee2(id: string):  Observable<Emp|undefined>{
+        return this.EmployeeCollection.doc<Emp>(id).valueChanges().pipe(
+          map(idea => {
+            if(idea)
+            idea.id = id;
+            return idea
+          })
+        );
+      }
+    
 
   addEmployee(Employee:Emp,type){
       if(Employee.id)
@@ -78,9 +114,32 @@ export class EmployeeService {
     );
 
   }
-  switchShift(i){
-
+  switchShift(s,array:number[]) {
+    console.log(s);
+   return this.afs.collection('switchShift').add(s).then(()=>{
+    this.EmployeeCollection.doc(s.id_form).update({StatusSwitch:array})
+   }
+   );
   }
+
+
+
+
+
+
+  // _______________________________req
+
+  getRequests():  Observable<switchShift[]>{
+    return this.Requests;
+  }
+
+  CancelRequests(user_id,array,id):  Promise<void>  {
+    this.EmployeeCollection.doc(user_id).update({StatusSwitch:array})
+    return  this.RequestsCollection.doc(id).update({status:-1});
+  }
+
+
+    
   async MassegeBox(mesege:any) {
     const alert =await   this.alertCtrl.create({
                header: 'Workshops',
@@ -88,5 +147,7 @@ export class EmployeeService {
                buttons: ['OK']
         });
         alert.present();
-      }
+  }
+
+   
 }

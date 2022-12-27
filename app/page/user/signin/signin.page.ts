@@ -27,9 +27,8 @@ export class SigninPage implements OnInit {
 
     this.user.SignIn(this.username, this.password).then( ()=>{
       this.UserType(this.username)
-    })
-    .catch( ()=>{
-      alert("SignIn Incorrect username or password");
+    }).catch( (res)=>{
+      this.dataSrv.MassegeBox("SignIn Incorrect username or password");
     });
 
   }
@@ -48,7 +47,7 @@ export class SigninPage implements OnInit {
           this.menuCtrl.enable(true);
           this.dataSrv.Userstype=type;
           if(type=='employee' || type=='Casher'   ){
-            this.dataSrv.Employee(id);
+            this.dataSrv.SetEmployee(id);
           }else if(type=='owner'){
             this.route.navigateByUrl('/items');
           }else if(type=='supplier') {

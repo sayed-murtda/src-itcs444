@@ -95,6 +95,16 @@ addsup(sup:supplier)  {
         return this.supFire.doc(id).get()
       }
 
+      getSupplier2(id:string): Observable<supplier|undefined>{
+        return this.supFire.doc<supplier>(id).valueChanges().pipe(
+          map(idea => {
+            if(idea)
+            idea.id = id;
+            return idea
+          })
+        );
+      }
+
       updateEmployee(id, item: any[]):  Promise<void>  {
         return  this.supFire.doc(id).update({items: item});
       }
