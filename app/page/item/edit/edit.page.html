@@ -1,7 +1,42 @@
-<app-headerpage title="Edit Item"></app-headerpage>
+<app-headerpage title="Edit Items"></app-headerpage>
 <ion-content>
-    <ion-item>
-        <ion-label>Edit Item 3liYusuf</ion-label>
-    </ion-item>
-
+    <ion-list>
+        <ion-item>
+            <ion-label>Name: </ion-label>
+            <ion-input type="text" [(ngModel)]="items.name"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Categories: </ion-label>
+            <ion-input type="text" [(ngModel)]="items.categories"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>description: </ion-label>
+            <ion-input type="text" [(ngModel)]="items.description"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Items per carton: </ion-label>
+            <ion-input type="number" [(ngModel)]="items.qtyPerCarton"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Quantity: </ion-label>
+            <ion-input type="number" [(ngModel)]="items.quantity"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Price: </ion-label>
+            <ion-input type="number" [(ngModel)]="items.price"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Supplier Price: </ion-label>
+            <ion-input type="number" [(ngModel)]="items.supplyPrice"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Item img(url):</ion-label>
+            <ion-input type="text" [(ngModel)]="items.image"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Supplier: </ion-label>
+            <ion-input type="text" [(ngModel)]="items.supplier"></ion-input>
+        </ion-item>
+        <ion-button expand="full" color="secondary" (click)="Save()">Update</ion-button>
+    </ion-list>
 </ion-content>

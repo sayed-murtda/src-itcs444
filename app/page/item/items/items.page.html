@@ -1,28 +1,20 @@
 <app-headerpage title="Items"></app-headerpage>
 <ion-content>
-    <ion-item>
-        <h1>Our Items:</h1>
-    </ion-item>
 
     <ion-searchbar [(ngModel)]="searchItem" (ionChange)="Search()"></ion-searchbar>
 
-    <ion-card *ngFor="let item of data.FilteredList">
 
-    <ion-item lines="none">
-        <ion-avatar size="large" slot="start">
-            <img  src="..\assets\img\{{item.image}}">
-          </ion-avatar> 
-        <ion-card-header>
-            <ion-card-title>
-                {{item.name}}
-            </ion-card-title>
-        </ion-card-header>
-    </ion-item>
-    <ion-card-content>
-        <ion-label>{{item.price}} fils</ion-label>
-    </ion-card-content>
-
+    <ion-card *ngFor="let item of items, let i = index">
+        <ion-item lines="none">
+            <ion-avatar size="large" slot="start">
+                <img src="{{item.image}}">
+            </ion-avatar>
+            <ion-card-header>
+                <ion-card-title>{{item.name}}</ion-card-title>
+                <p>{{item.price}} BHD</p>
+                <p>{{item.description}}</p>
+                <ion-button routerLink="../item/edit" [queryParams]="{index:i}">Edit</ion-button>
+            </ion-card-header>
+        </ion-item>
     </ion-card>
-
-
 </ion-content>

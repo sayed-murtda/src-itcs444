@@ -83,14 +83,14 @@ export class EmployeeService {
   }
 
   getEmployee2(id: string):  Observable<Emp|undefined>{
-        return this.EmployeeCollection.doc<Emp>(id).valueChanges().pipe(
-          map(idea => {
-            if(idea)
-            idea.id = id;
-            return idea
-          })
-        );
-      }
+    return this.EmployeeCollection.doc<Emp>(id).valueChanges().pipe(
+      map(idea => {
+        if(idea)
+        idea.id = id;
+        return idea
+      })
+    );
+  }
     
 
   addEmployee(Employee:Emp,type){
