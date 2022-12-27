@@ -26,7 +26,7 @@
       <ion-list *ngIf="supplier">
 
         <div *ngFor="let item of supplier.items; let i=index;" >
-            <ion-item  >
+            <ion-item>
                 <ion-label (click)="Opeeen(i)">{{item.name}}
                     <br> <ion-label *ngIf="open[i]">
                         {{item.description}} <br>Price: {{item.supplyPrice}}BD per {{item.qtyPerCarton}}
