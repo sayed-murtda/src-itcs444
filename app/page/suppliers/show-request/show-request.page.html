@@ -1,11 +1,18 @@
 <app-headerpage title="Requset"></app-headerpage>
 
 <ion-content>
-{{dataSrv.supplier | json}}
+<!-- {{dataSrv.supplier | json}} -->
 
     <div *ngFor="let item of requests; let i=index;" >
         <ion-item>
+
             <ion-label (click)="Opeeen(i)">{{item.supplier_name}} - total price: {{item.total}}BD
+                
+                <div>
+                    <ion-button slot="end" color="success" (click)="accept(item.items, item.id, requests)">Accept</ion-button>  
+                    <ion-button slot="end" color="danger" (click)="delete(item.id)">reject</ion-button>
+                </div>
+
                 <br> 
 
                 <div *ngIf="open[i]">
@@ -38,14 +45,11 @@
 
 
              </ion-label>
+             
 
-          
         </ion-item>
       </div>
 
-      <br>
-      <div align="center">
-        <ion-button fill="outline" (click)="request()">Accept and send</ion-button>
-      </div>
+
 
 </ion-content>

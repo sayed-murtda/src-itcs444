@@ -7,6 +7,7 @@ import { UserService } from '../user/user.service';
 import { AlertController } from '@ionic/angular';
 
 
+
 export interface supplier {
   id?: string,
   name: string,
@@ -51,9 +52,11 @@ export class SupServiceService {
    private supFire: AngularFirestoreCollection<supplier>; // linked with firebase
 
 
-   private requested_item: Observable<supplier[]>;
-   private requested_item_fire: AngularFirestoreCollection<supplier>; // linked with firebase
+   private requested_item: Observable<any[]>;
+   private requested_item_fire: AngularFirestoreCollection<any>; // linked with firebase
 
+   private item: Observable<any[]>;
+   private item_fire: AngularFirestoreCollection<any>; // linked with firebase
 
 
   // this array will have the variables of suppliers (ID, name and phone )
@@ -87,8 +90,57 @@ export class SupServiceService {
           );
 
 
+        // these for accept requested items for supplier
+        this.item_fire= this.afs.collection('items');
+        this.item= this.item_fire.snapshotChanges().pipe(
+          map(actions => {
+            return actions.map(a => {
+              const data = a.payload.doc.data();
+              const id = a.payload.doc.id;
+              return { id, ...data };
+            });
+          })
+
+          );
+
+
+      
+    }// end of constructor
+
+    // this to add items to firebase after supplier accepted them
+    add_item(item): Promise<any> {
+      return this.item_fire.add(item); 
+    }
+
+
+    // this to get the accepted items from the firebase by their id to add them to add_item()
+   
+    // getSuppliers(): Observable<supplier[]> {
+    //   return this.sup;
+    // }
+
+    // getSupplier(id:string){
+    //   return this.supFire.doc(id).get()
+    // }
+
+    add_accepted_item_req(item): Promise<any> {
+      
+      return this.item_fire.add(item); 
+    }
+  
+    send_report(requests){
+      this.afs.collection('report_order').add(requests)
+    }
+   
+    get_Accepted_item_request(id:string){
+      return this.requested_item_fire.doc(id).get()
       
     }
+    // this to delete requested items form firebase after accepted them of reject 
+    delete_requested_item(id){
+      return  this.requested_item_fire.doc(id).delete();
+    }
+
 
     // this for add supplier in firebase
    add(sup:supplier): Promise<any> {
@@ -99,10 +151,6 @@ export class SupServiceService {
     return this.requested_item_fire.add(ruq); 
   }
 
-    // getIdeas(): Observable<Idea[]> {
-    //     return this.ideas;
-    //   }
-    
 
   get_requested_items(): Observable<any[]> {
     return this.requested_item;

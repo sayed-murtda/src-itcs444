@@ -26,46 +26,37 @@ export class ShowRequestPage implements OnInit {
   display_req_items(){
     this.data.get_requested_items().subscribe(item => {
       this.requests = item;
-      console.log(this.requests);
+      
     }) 
   }
 
 
   Opeeen(i){
     this.open[i]=!this.open[i];
-    console.log(this.requests[0].items);
+    // console.log(this.requests[0].items);
   }
 
 
 
+accepted_items;
 
-  // show(){
+  accept(items , id, requests){ 
     
-  //   for(var i=0; i<this.data.item_request.length; i++){
-  //     if(this.data.item_request[i].qty_Requests !=0){
-  //       let temp = this.data.item_request[i].qty_Requests;
-  //       this.show_Req.push(
-  //                           {
-  //                             categories:  this.data.item_request[i].categories, 
-  //                             description:  this.data.item_request[i].description,
-  //                             image:  this.data.item_request[i].image,
-  //                             name:  this.data.item_request[i].name,
-  //                             price:  this.data.item_request[i].price, 
-  //                             qtyPerCarton:  this.data.item_request[i].qtyPerCarton,
-  //                             qty_Requests:  this.data.item_request[i].qty_Requests,         
-  //                             supplyPrice:  this.data.item_request[i].supplyPrice,
-  //                           }
-  //                         );
-        
-  //     }
-  //   }
-    
-  // }
+    items.forEach(item => {
+      item.price = (item.supplyPrice / item.qtyPerCarton *1.5).toFixed(2);
+      item.qty = item.qtyPerCarton * item.qty_Requests;
+      console.log(item);
+      this.data.add_accepted_item_req(item)
+    })
 
-  request(){
-
+    // this.data.send_report(requests);
+    this.data.delete_requested_item(id)
+    this.dataSrv.MassegeBox('Request Accepted');
   }
 
-
+delete(id){
+  this.data.delete_requested_item(id)
+  this.dataSrv.MassegeBox('Request rejected');
+}
 
 }

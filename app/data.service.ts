@@ -111,7 +111,6 @@ users=[
 
   async MassegeBox(mesege:any) {
     const alert =await   this.alertCtrl.create({
-               header: 'Workshops',
                message: mesege,
                buttons: ['OK']
         });
