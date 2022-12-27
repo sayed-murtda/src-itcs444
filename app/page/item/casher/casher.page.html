@@ -1,5 +1,28 @@
 <app-headerpage title="Casher"></app-headerpage>
 
 <ion-content>
-<h1>Hi sayed w</h1>
+
+
+    <div *ngFor="let item of items; let i=index;" >
+        <ion-item>
+            <br>
+            <ion-label (click)="Opeeen(i)">{{item.name}} <br>{{item.description}} <br> {{item.price}}BD
+                <br> <br>
+                <ion-button fill="outline" (click)="add_to_bascket(item[i])">Add to basket</ion-button> 
+            </ion-label>
+            <ion-avatar slot="start">
+            <img src='{{item.image}}'>
+            </ion-avatar> 
+            <ion-item>
+                <ion-button color="danger" fill="clear" (click)="subQty(i)"><ion-icon name="remove-outline"></ion-icon></ion-button>
+                <ion-label>{{item.Sell_qty}}</ion-label>
+                <ion-button color="Success" fill="clear" (click)="addQty(i)"><ion-icon name="add-outline"></ion-icon></ion-button>
+            </ion-item>  
+            <br>
+            <!-- <ion-button fill="outline" (click)="add_to_bascket()">Add to basket</ion-button>         -->
+        </ion-item>
+      </div>
+
+      
+
 </ion-content>

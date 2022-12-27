@@ -45,6 +45,7 @@ accepted_items;
     items.forEach(item => {
       item.price = (item.supplyPrice / item.qtyPerCarton *1.5).toFixed(2);
       item.qty = item.qtyPerCarton * item.qty_Requests;
+      item.Sell_qty = 0;
       console.log(item);
       this.data.add_accepted_item_req(item)
     })
