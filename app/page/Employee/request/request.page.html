@@ -1,7 +1,7 @@
 <app-headerpage title="request"></app-headerpage>
 
 <ion-content>
-    <h1 class="ion-padding">Requests</h1>
+    <h1 class="ion-padding">My Requests </h1>
     <ion-list >
 
      <div *ngFor="let req of this.empServ.Requests | async" >
@@ -21,6 +21,7 @@
       
     </ion-list>
 
+    <h1 class="ion-padding">Requests Inbox</h1>
 
     <ion-list *ngFor="let req of this.empServ.Requests | async">
      
@@ -28,12 +29,12 @@
 
     
                   <ion-item lines="none">
-                    <p> <b> My Requests from:</b> {{req.id_form}}  <b>-Day:</b> {{week[req.day]}}
+                    <p> <b>Requests from:</b> {{req.id_form}}  <b>-Day:</b> {{week[req.day]}}
                        <br>  <b>My Shift:</b> {{req.shift_to}} <b>-to Shift:</b> {{req.shift_from}}
                     </p>
-                </ion-item>
-                    <ion-button slot="end" (click)="accept(req.id,req.day)" color="success">accept</ion-button>
-                    <ion-button slot="end" (click)="Reject(req.id,req.day)" color="danger">Reject</ion-button>
+                </ion-item>RejectRequests(from,day,id_req)-(from,day,id_req,shift_from,shift_to,to)
+                    <ion-button slot="end" (click)="accept(req.id_form,req.day,req.id,req.shift_from,req.shift_to,req.id_to)" color="success">accept</ion-button>
+                    <ion-button slot="end" (click)="Reject(req.id_form,req.day,req.id)" color="danger">Reject</ion-button>
         </ion-item>
       
     </ion-list>

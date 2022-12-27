@@ -20,13 +20,13 @@ export class RequestPage implements OnInit {
     this.dataSrv.emp.StatusSwitch[day]=-1;
     this.empServ.CancelRequests(this.dataSrv.emp.id, this.dataSrv.emp.StatusSwitch,id)
   }
-  accept(id,day){
-    this.dataSrv.emp.StatusSwitch[day]=-1;
-    this.empServ.CancelRequests(this.dataSrv.emp.id, this.dataSrv.emp.StatusSwitch,id)
+  accept(from,day,id_req,shift_from,shift_to,to){
+    this.empServ.AcceptRequests(from,day,id_req,shift_from,shift_to,to)
   }
-  Reject(id,day){
-    this.dataSrv.emp.StatusSwitch[day]=-1;
-    this.empServ.CancelRequests(this.dataSrv.emp.id, this.dataSrv.emp.StatusSwitch,id)
+
+  // RejectRequests(from,day,id_req)
+  Reject(from,day,id_req){
+    this.empServ.RejectRequests(from,day,id_req)
   }
 
 }

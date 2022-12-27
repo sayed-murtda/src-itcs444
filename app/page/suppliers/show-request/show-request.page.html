@@ -1,5 +1,51 @@
 <app-headerpage title="Requset"></app-headerpage>
 
 <ion-content>
+{{dataSrv.supplier | json}}
+
+    <div *ngFor="let item of requests; let i=index;" >
+        <ion-item>
+            <ion-label (click)="Opeeen(i)">{{item.supplier_name}} - total price: {{item.total}}BD
+                <br> 
+
+                <div *ngIf="open[i]">
+                    
+                <div *ngFor="let x of requests[i].items; let j=index;">
+                    
+                    <ion-item>
+
+                        <ion-label>{{x.name}} <br>
+                             <ion-label>
+                               Price: {{x.supplyPrice}}BD per {{x.qtyPerCarton}}
+                             </ion-label> 
+                        </ion-label>
+
+                        <ion-avatar slot="start">
+                            <img src='{{x.image}}'>
+                        </ion-avatar>
+
+                        <ion-item>
+                             <ion-label>{{x.qty_Requests}}</ion-label>
+                        </ion-item>    
+
+                    </ion-item>
+
+
+
+                </div>
+                
+                </div>
+
+
+             </ion-label>
+
+          
+        </ion-item>
+      </div>
+
+      <br>
+      <div align="center">
+        <ion-button fill="outline" (click)="request()">Accept and send</ion-button>
+      </div>
 
 </ion-content>

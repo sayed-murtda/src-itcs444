@@ -16,7 +16,7 @@ export interface supplier {
   Requests: Request[]
 }
 
-interface item{
+export interface item{
   id: any;
   name: string;
   categories:string;
@@ -25,7 +25,7 @@ interface item{
   price: number;
   supplyPrice: number;
   image: string;
-  qty_Requests?:number;
+  qty_Requests:number;
   Supplier:string;
 }
 
@@ -44,11 +44,17 @@ export class SupServiceService {
 
   // this array for the requested items for supplier 
   item_request: item[] = [];
-
+  show_Req: any[] = [];
 
   // these two array for dealing with firebase
    private sup: Observable<supplier[]>;
    private supFire: AngularFirestoreCollection<supplier>; // linked with firebase
+
+
+   private requested_item: Observable<supplier[]>;
+   private requested_item_fire: AngularFirestoreCollection<supplier>; // linked with firebase
+
+
 
   // this array will have the variables of suppliers (ID, name and phone )
   public supAdd: supplier = {} as supplier;
@@ -66,12 +72,41 @@ export class SupServiceService {
         })
       );
       // end putting firebase stuff for adding supplier
+
+        // these for requested items
+        this.requested_item_fire= this.afs.collection('requested items');
+        this.requested_item= this.requested_item_fire.snapshotChanges().pipe(
+          map(actions => {
+            return actions.map(a => {
+              const data = a.payload.doc.data();
+              const id = a.payload.doc.id;
+              return { id, ...data };
+            });
+          })
+
+          );
+
+
+      
     }
 
     // this for add supplier in firebase
    add(sup:supplier): Promise<any> {
     return this.supFire.add(sup); 
-}
+  }
+
+  add_Request(ruq): Promise<any> {
+    return this.requested_item_fire.add(ruq); 
+  }
+
+    // getIdeas(): Observable<Idea[]> {
+    //     return this.ideas;
+    //   }
+    
+
+  get_requested_items(): Observable<any[]> {
+    return this.requested_item;
+  }
 
 addsup(sup:supplier)  {
   let type = "supplier";
@@ -93,6 +128,8 @@ addsup(sup:supplier)  {
       getSuppliers(): Observable<supplier[]> {
           return this.sup;
         }
+
+
       
 
       getSupplier(id:string){
