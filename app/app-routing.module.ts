@@ -78,6 +78,10 @@ const routes: Routes = [
     path: 'sup-items',
     loadChildren: () => import('./page/suppliers/sup-items/sup-items.module').then( m => m.SupItemsPageModule)
   },
+  {
+    path: 'show-request',
+    loadChildren: () => import('./page/suppliers/show-request/show-request.module').then( m => m.ShowRequestPageModule)
+  },
 
 
 

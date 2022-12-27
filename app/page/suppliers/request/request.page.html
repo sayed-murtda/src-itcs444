@@ -26,30 +26,26 @@
       <ion-list *ngIf="supplier">
 
         <div *ngFor="let item of supplier.items; let i=index;" >
-            <ion-item (click)="Opeeen(i)" >
-                <ion-label>{{item.name}} <br>{{item.description}}
-                <br> <p *ngIf="open[i]">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam sit inventore autem, quis quo neque fugiat, maiores itaque similique facilis voluptatem sint ullam debitis expedita odio hic? Officia, nam nihil.
-                </p>
+            <ion-item  >
+                <ion-label (click)="Opeeen(i)">{{item.name}}
+                    <br> <ion-label *ngIf="open[i]">
+                        {{item.description}} <br>Price: {{item.supplyPrice}}BD per {{item.qtyPerCarton}}
+                    </ion-label> 
                 </ion-label>
-                <ion-avatar slot="start" (click)="goToDetail(i)">
+                <ion-avatar slot="start">
                 <img src='{{item.image}}'>
                 </ion-avatar> 
                 <ion-item>
                     <ion-button fill="clear" (click)="subQty(i)"><ion-icon name="remove-outline"></ion-icon></ion-button>
                     <ion-label>{{item.qty_Requests}}</ion-label>
                     <ion-button fill="clear" (click)="addQty(i)"><ion-icon name="add-outline"></ion-icon></ion-button>
-                </ion-item>
-                <ion-avatar slot="end" *ngIf="View">
-                <ion-button fill="clear" (click)="makeDuble(i)">
-                    <ion-icon name="copy-outline"></ion-icon>
-                </ion-button>
-                
-                </ion-avatar>
-                  
-            
+                </ion-item>            
             </ion-item>
+          </div>
 
+          <br>
+          <div align="center">
+            <ion-button fill="outline" (click)="request()">Requset</ion-button>
           </div>
         </ion-list>
 </ion-content>

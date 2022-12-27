@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { supplier, SupServiceService } from '../sup-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-request',
@@ -8,7 +9,7 @@ import { supplier, SupServiceService } from '../sup-service.service';
 })
 export class RequestPage implements OnInit {
 
-  constructor(private data: SupServiceService) {}
+  constructor(private data: SupServiceService, public router: Router) {}
   
 
   ngOnInit() {
@@ -24,24 +25,28 @@ export class RequestPage implements OnInit {
   }
 
 
+  subQty(i){
+    if(this.supplier.items[i].qty_Requests != 0)
+    this.supplier.items[i].qty_Requests--;
+    
+  }
 
+  addQty(i){
+    this.supplier.items[i].qty_Requests++;
+  }
 
-
-
-  goToDetail(i){}
-
-  subQty(i){}
-
-  addQty(i){}
-
-  makeDuble(i){}
-
-  deleteItem(i){}
 
   Opeeen(i){
     this.open[i]=!this.open[i];
   }
 
+  request(){
+    console.log(this.supplier.items);
+    this.data.item_request = this.supplier.items; // add requested items
+    this.router.navigateByUrl('/show-request');
+
+
+  }
 
 
 }

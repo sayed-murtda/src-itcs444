@@ -42,6 +42,10 @@ interface Request{
 })
 export class SupServiceService {
 
+  // this array for the requested items for supplier 
+  item_request: item[] = [];
+
+
   // these two array for dealing with firebase
    private sup: Observable<supplier[]>;
    private supFire: AngularFirestoreCollection<supplier>; // linked with firebase
