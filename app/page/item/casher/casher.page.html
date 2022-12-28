@@ -4,11 +4,12 @@
 
 
     <div *ngFor="let item of items; let i=index;" >
+        <!-- {{item | json}} -->
         <ion-item>
             <br>
             <ion-label (click)="Opeeen(i)">{{item.name}} <br>{{item.description}} <br> {{item.price}}BD
                 <br> <br>
-                <ion-button fill="outline" (click)="add_to_bascket(item[i])">Add to basket</ion-button> 
+                <ion-button fill="outline" (click)="add_to_bascket(i,item)">Add to basket</ion-button> 
             </ion-label>
             <ion-avatar slot="start">
             <img src='{{item.image}}'>
@@ -19,10 +20,15 @@
                 <ion-button color="Success" fill="clear" (click)="addQty(i)"><ion-icon name="add-outline"></ion-icon></ion-button>
             </ion-item>  
             <br>
-            <!-- <ion-button fill="outline" (click)="add_to_bascket()">Add to basket</ion-button>         -->
+
         </ion-item>
       </div>
 
-      
+      <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+          <ion-fab-button (click)="go_basket()">
+            <ion-icon name="basket-outline"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
+        
 
 </ion-content>

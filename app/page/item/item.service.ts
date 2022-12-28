@@ -10,7 +10,7 @@ import { UserService } from '../user/user.service';
 export interface itm {
   categories: string;
   description: string;
-  id:string;
+  id?:string;
   image: string;
   name: string;
   price: number;
@@ -49,7 +49,7 @@ export class ItemService {
             return  actions.map(a  =>  {
                 const  data  =  a.payload.doc.data();
                 const  id  =  a.payload.doc.id;
-                return  {    ...data  };
+                return  {    id,...data  };
             });
         })
     );
@@ -85,4 +85,11 @@ export class ItemService {
     return this.ItemCollection.doc(name).delete();
   }
 
+
+  // dealing with basket
+
+  basket_list: any[] = [];
+
+
+  basket_total_price=0;
 }

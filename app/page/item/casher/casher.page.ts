@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemService } from '../item.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-casher',
@@ -8,7 +9,7 @@ import { ItemService } from '../item.service';
 })
 export class CasherPage implements OnInit {
 
-  constructor(public data: ItemService) {
+  constructor(public data: ItemService, public router: Router,) {
 
     this.show_items();
     
@@ -40,8 +41,17 @@ items: any[] = [];
     this.items[i].Sell_qty++;
   }
 
-  add_to_bascket(item){
+  add_to_bascket(i , item){
+    let temp;
+    this.data.basket_list.push(item);
+    Number(this.data.basket_total_price += Number(item.price) * item.Sell_qty);
+    console.log(this.data.basket_list);
     
+  }
+
+  go_basket(){
+
+    this.router.navigateByUrl('/bascket');
   }
 
 }

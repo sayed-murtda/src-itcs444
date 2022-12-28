@@ -1,0 +1,31 @@
+<app-headerpage title="basket"></app-headerpage>
+
+
+<ion-content>
+
+  <div *ngFor="let item of data.basket_list; let i=index;" >
+    <!-- {{item | json}} -->
+    <ion-item>
+        <br>
+        <ion-label>{{item.name}} <br>{{item.description}} <br> {{item.price}}BD
+            <br> <br>
+        </ion-label>
+        <ion-avatar slot="start">
+        <img src='{{item.image}}'>
+        </ion-avatar> 
+        <ion-item>
+            <ion-label>{{item.Sell_qty}}</ion-label>
+        </ion-item>  
+        <br>
+
+    </ion-item>
+  </div>
+  <div align="center">
+    <ion-label>Total Price: {{data.basket_total_price}}BD</ion-label>
+  </div>
+
+        <div align="center">
+          <ion-button fill="outline" (click)="sell()">Sell</ion-button>
+        </div>
+ 
+</ion-content>

@@ -82,6 +82,10 @@ const routes: Routes = [
     path: 'show-request',
     loadChildren: () => import('./page/suppliers/show-request/show-request.module').then( m => m.ShowRequestPageModule)
   },
+  {
+    path: 'bascket',
+    loadChildren: () => import('./page/item/bascket/bascket.module').then( m => m.BascketPageModule)
+  },
 
 
 
