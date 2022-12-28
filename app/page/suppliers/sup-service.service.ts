@@ -129,7 +129,11 @@ export class SupServiceService {
     }
   
     send_report(requests){
-      this.afs.collection('report_order').add(requests)
+      const date = new Date();
+
+      const today = date.toLocaleDateString();
+
+      this.afs.collection('report_order').add({...requests,date:today})
     }
    
     get_Accepted_item_request(id:string){

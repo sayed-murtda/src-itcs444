@@ -86,6 +86,10 @@ const routes: Routes = [
     path: 'bascket',
     loadChildren: () => import('./page/item/bascket/bascket.module').then( m => m.BascketPageModule)
   },
+  {
+    path: 'order-report',
+    loadChildren: () => import('./page/Reports/order-report/order-report.module').then( m => m.OrderReportPageModule)
+  },
 
 
 

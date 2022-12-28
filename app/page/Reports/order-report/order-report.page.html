@@ -1,0 +1,30 @@
+<app-headerpage title="Orders Reports"></app-headerpage>
+
+<ion-content>
+
+  <ion-row class="header">
+    <ion-col>ON</ion-col>
+    <ion-col>Supplier Name</ion-col>
+    <ion-col>date</ion-col>
+    <ion-col>ItemQty</ion-col>
+    <ion-col>Total</ion-col>
+  </ion-row>
+
+  <ion-row class="main" *ngFor="let re of reports;let i=index" >
+    <ion-col>{{i+1}}</ion-col>
+    <ion-col>{{re.supplier_name}}</ion-col>
+    <ion-col>{{re.date}}</ion-col>
+    <ion-col>{{re.items.length}}</ion-col>
+    <ion-col>{{re.total}}</ion-col>
+  </ion-row>
+
+
+  <ion-row class="header">
+    <ion-col></ion-col>
+    <ion-col></ion-col>
+    <ion-col></ion-col>
+    <ion-col>{{qty}}</ion-col>
+    <ion-col>{{total}}</ion-col>
+  </ion-row>
+
+</ion-content>
