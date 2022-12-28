@@ -39,6 +39,7 @@ export class ItemService {
   public Items: Observable<itm[]>;
   private ItemCollection: AngularFirestoreCollection<itm>;
   public Item:itm[] = [];
+  FilteredList: any[];
 
   constructor(private  afs:  AngularFirestore, public alertCtrl:AlertController,
     public afAuth: AngularFireAuth,public UserSrv:UserService) {
