@@ -90,6 +90,10 @@ const routes: Routes = [
     path: 'order-report',
     loadChildren: () => import('./page/Reports/order-report/order-report.module').then( m => m.OrderReportPageModule)
   },
+  {
+    path: 'remove',
+    loadChildren: () => import('./page/item/remove/remove.module').then( m => m.RemovePageModule)
+  },
 
 
 

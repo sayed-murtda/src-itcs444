@@ -29,4 +29,8 @@ export class ItemsPage implements OnInit {
   ngOnInit() {
   }
 
+  delete_item(id){
+    this.itemSrv.deleteItem(id);
+  }
+
 }

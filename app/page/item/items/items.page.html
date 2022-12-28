@@ -14,6 +14,7 @@
                 <p>{{item.price}} BHD</p>
                 <p>{{item.description}}</p>
                 <ion-button routerLink="../item/edit" [queryParams]="{index:i}">Edit</ion-button>
+                <ion-button color="danger" (click)="delete_item(item.id)">Delete</ion-button>
             </ion-card-header>
         </ion-item>
     </ion-card>
