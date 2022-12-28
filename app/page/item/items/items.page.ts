@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../../data.service';
 import { itm, ItemService } from '../item.service';
+
 @Component({
   selector: 'app-items',
   templateUrl: './items.page.html',
@@ -9,10 +10,11 @@ import { itm, ItemService } from '../item.service';
 export class ItemsPage implements OnInit {
   items:itm[]=[];
   constructor(public data: DataService, public itemSrv:ItemService) {
-    this.data.FilteredList = this.data.ListItems;
+    
     itemSrv.getItems().subscribe((res)=>{
       if(res){
       this.items=res;
+      this.data.FilteredList = this.items;
       }
     })
   }
@@ -20,7 +22,7 @@ export class ItemsPage implements OnInit {
   searchItem = "";
 
   Search(){
-    this.data.FilteredList= this.data.ListItems.filter((item)=>{
+    this.data.FilteredList= this.items.filter((item)=>{
       return (item.name.toLowerCase().indexOf(this.searchItem.toLowerCase())!=-1)
     })
   }

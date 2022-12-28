@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemService } from '../item.service';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { DataService } from '../../../data.service';
 @Component({
   selector: 'app-casher',
   templateUrl: './casher.page.html',
@@ -9,7 +9,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CasherPage implements OnInit {
 
-  constructor(public data: ItemService, public router: Router,) {
+  constructor(public data: ItemService, public router: Router,public dataSrv:DataService ) {
+
+    data.getItems().subscribe((res)=>{
+      if(res){
+      this.items=res;
+      this.dataSrv.FilteredList = this.items;
+      }
+    })
 
     this.show_items();
     
@@ -19,7 +26,14 @@ export class CasherPage implements OnInit {
   }
 
 items: any[] = [];
+searchItem = "";
 
+
+Search(){
+  this.dataSrv.FilteredList= this.items.filter((item)=>{
+    return (item.name.toLowerCase().indexOf(this.searchItem.toLowerCase())!=-1)
+  })
+}
 
   show_items(){
     this.data.getItems().subscribe(item =>{

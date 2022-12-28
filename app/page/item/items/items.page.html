@@ -4,7 +4,7 @@
     <ion-searchbar [(ngModel)]="searchItem" (ionChange)="Search()"></ion-searchbar>
 
 
-    <ion-card *ngFor="let item of items, let i = index">
+    <ion-card *ngFor="let item of data.FilteredList, let i = index"> 
         <ion-item lines="none">
             <ion-avatar size="large" slot="start">
                 <img src="{{item.image}}">

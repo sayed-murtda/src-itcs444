@@ -77,7 +77,7 @@ export class DataService {
 users=[
   {id:1,username:'admin',password:'admin',type:'admin'},
 ]
-  FilteredList: item[]= [];
+  FilteredList: any[]= [];
 
   cheackuser (username:string,password:string){
 

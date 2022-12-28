@@ -2,8 +2,9 @@
 
 <ion-content>
 
+    <ion-searchbar [(ngModel)]="searchItem" (ionChange)="Search()"></ion-searchbar>
 
-    <div *ngFor="let item of items; let i=index;" >
+    <div *ngFor="let item of dataSrv.FilteredList; let i=index;" >
         <!-- {{item | json}} -->
         <ion-item>
             <br>
