@@ -6,7 +6,7 @@
         <ion-item>
             <ion-label>Select Supplier: </ion-label>
           <ion-select [(ngModel)]="supplier_ID" placeholder="Select fruit" (ionChange)="display_sup_items()">
-            <ion-select-option *ngFor="let x of data.sup | async" value="{{x.id}}" >{{x.name}}</ion-select-option>
+            <ion-select-option *ngFor="let x of data.getSuppliers() | async" value="{{x.id}}" >{{x.name}}</ion-select-option>
           </ion-select>
         </ion-item>
       </ion-list>

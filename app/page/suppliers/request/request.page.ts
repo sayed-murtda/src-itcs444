@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {item, supplier, SupServiceService } from '../sup-service.service';
 import { Router } from '@angular/router';
+import { DataService } from '../../../data.service';
 
 @Component({
   selector: 'app-request',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class RequestPage implements OnInit {
 
-  constructor(private data: SupServiceService, public router: Router) {}
+  constructor(public data: SupServiceService, public router: Router,public dataSrv:DataService) {}
   
 
   ngOnInit() {
@@ -63,9 +64,9 @@ export class RequestPage implements OnInit {
     }
     if(counter !=0)
     this.data.add_Request({supplier_name: name  ,total: total, items: array});
-
-    this.router.navigateByUrl('/show-request');
-
+    
+    this.dataSrv.MassegeBox('Done requst Items');
+    this.router.navigateByUrl('/items');
 
   }
 

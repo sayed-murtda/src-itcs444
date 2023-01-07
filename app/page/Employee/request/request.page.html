@@ -32,7 +32,7 @@
                     <p> <b>Requests from:</b> {{req.id_form}}  <b>-Day:</b> {{week[req.day]}}
                        <br>  <b>My Shift:</b> {{req.shift_to}} <b>-to Shift:</b> {{req.shift_from}}
                     </p>
-                </ion-item>RejectRequests(from,day,id_req)-(from,day,id_req,shift_from,shift_to,to)
+                </ion-item>
                     <ion-button slot="end" (click)="accept(req.id_form,req.day,req.id,req.shift_from,req.shift_to,req.id_to)" color="success">accept</ion-button>
                     <ion-button slot="end" (click)="Reject(req.id_form,req.day,req.id)" color="danger">Reject</ion-button>
         </ion-item>
